@@ -1,0 +1,27 @@
+{
+  "name": "random-game",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "deploy": "npm run build && gh-pages -d dist -e coffee-house"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "gh-pages": "^6.1.1",
+    "prettier": "^3.3.3",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
+  }
+}
