@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "deploy": "npm run build && gh-pages -d dist -e coffee-house"
+    "deploy": "npm run build && gh-pages -d dist -e random-game"
   },
   "keywords": [],
   "author": "",
