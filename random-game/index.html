@@ -5,99 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="./src/img/svg/favicon.svg" />
     <link rel="stylesheet" href="./src/style/style.css" />
+    <script src="./src/js/index.js" type="module"></script>
     <title>Tetris</title>
   </head>
   <body class="body">
-    <div class="header">
-      <button class="button-sound">
-        <img
-          class="button-sound__img"
-          src="./src/img/svg/mute.svg"
-          alt="sound icon"
-        />
-      </button>
-    </div>
-    <div class="wrapper">
-      <div class="main">
-        <div class="main-top">
-          <p class="score">Score: 1984</p>
-          <button class="switch">
-            <img src="./src/img/svg/white.svg" alt="" />
-          </button>
-        </div>
-        <div class="main-bottom">
-          <div class="main-rules">
-            <p class="rules-title">Rules</p>
-            <ul class="rules-list">
-              <li class="rule">
-                <p class="rule-title">Rotate</p>
-                <img
-                  class="rules-icon"
-                  src="./src/img/svg/arrow.svg"
-                  alt="rule icon"
-                />
-              </li>
-              <li class="rule">
-                <p class="rule-title">Speed</p>
-                <img
-                  class="rules-icon rules-icon-speed"
-                  src="./src/img/svg/arrow.svg"
-                  alt="rule icon"
-                />
-              </li>
-              <li class="rule">
-                <p class="rule-title">Move</p>
-                <img
-                  class="rules-icon rules-icon-left"
-                  src="./src/img/svg/arrow.svg"
-                  alt="rule icon"
-                />
-                <img
-                  class="rules-icon rules-icon-right"
-                  src="./src/img/svg/arrow.svg"
-                  alt="rule icon"
-                />
-              </li>
-              <li class="rule">
-                <p class="rule-title">Lower down</p>
-                <img
-                  class="rules-icon rules-icon-space"
-                  src="./src/img/svg/space.svg"
-                  alt="rule icon"
-                />
-              </li>
-            </ul>
+    <div class="page">
+      <header class="header">
+        <button class="button-sound">
+          <img
+            class="button-sound__img"
+            src="./src/img/svg/mute.svg"
+            alt="sound icon"
+          />
+        </button>
+      </header>
+      <div class="wrapper">
+        <main class="main">
+          <div class="main-top">
+            <p class="score">Score: 1984</p>
+            <button class="switch">
+              <img src="./src/img/svg/white.svg" alt="" />
+            </button>
           </div>
-          <div class="main-game"></div>
-          <div class="main-next">
-            <p class="next-title">Next</p>
-            <ul class="next__list">
-              <li class="next__item">
-                <img class="next__img j-img" src="./src/img/j.png" alt="" />
-              </li>
-              <li class="next__item">
-                <img class="next__img i-img" src="./src/img/i.png" alt="" />
-              </li>
-              <li class="next__item">
-                <img class="next__img o-img" src="./src/img/o.png" alt="" />
-              </li>
-            </ul>
+          <div class="main-bottom">
+            <div class="main-rules">
+              <p class="rules-title">Rules</p>
+              <ul class="rules-list">
+                <li class="rule">
+                  <p class="rule-title">Rotate</p>
+                  <img
+                    class="rules-icon"
+                    src="./src/img/svg/arrow.svg"
+                    alt="rule icon"
+                  />
+                </li>
+                <li class="rule">
+                  <p class="rule-title">Speed</p>
+                  <img
+                    class="rules-icon rules-icon-speed"
+                    src="./src/img/svg/arrow.svg"
+                    alt="rule icon"
+                  />
+                </li>
+                <li class="rule">
+                  <p class="rule-title">Move</p>
+                  <img
+                    class="rules-icon rules-icon-left"
+                    src="./src/img/svg/arrow.svg"
+                    alt="rule icon"
+                  />
+                  <img
+                    class="rules-icon rules-icon-right"
+                    src="./src/img/svg/arrow.svg"
+                    alt="rule icon"
+                  />
+                </li>
+                <li class="rule">
+                  <p class="rule-title">Lower down</p>
+                  <img
+                    class="rules-icon rules-icon-space"
+                    src="./src/img/svg/space.svg"
+                    alt="rule icon"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="main-game"></div>
+            <div class="main-next">
+              <p class="next-title">Next</p>
+              <ul class="next__list">
+                <li class="next__item">
+                  <img class="next__img j-img" src="./src/img/j.png" alt="" />
+                </li>
+                <li class="next__item">
+                  <img class="next__img i-img" src="./src/img/i.png" alt="" />
+                </li>
+                <li class="next__item">
+                  <img class="next__img o-img" src="./src/img/o.png" alt="" />
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </main>
       </div>
+      <footer class="footer">
+        <a href="https://github.com/assavr" class="github" target="_blank">
+          assavr
+        </a>
+        <p class="year">2024</p>
+        <a
+          href="https://rs.school/courses/javascript"
+          class="rss"
+          target="_blank"
+        >
+          <img src="./src/img/svg/rs_school_js.svg" alt="" class="rss-img" />
+        </a>
+      </footer>
     </div>
-    <footer class="footer">
-      <a href="https://github.com/assavr" class="github" target="_blank">
-        assavr
-      </a>
-      <p class="year">2024</p>
-      <a
-        href="https://rs.school/courses/javascript"
-        class="rss"
-        target="_blank"
-      >
-        <img src="./src/img/svg/rs_school_js.svg" alt="" class="rss-img" />
-      </a>
-    </footer>
   </body>
 </html>

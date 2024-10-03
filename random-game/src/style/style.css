@@ -1,17 +1,40 @@
 @import url(../../node_modules/modern-normalize/modern-normalize.css);
 
+/*
+  ---1920px---
+  1 клетка - 40px
+  10 х 15
+  400px х 600px
+
+
+  ---1440px---
+  1 клетка - 30px
+  10 x 15
+  300px x 450px
+
+---1024px---
+  1 клетка - 28px
+  10 x 15
+  280px x  420px
+
+*/
+
 .body {
   background: url(../img/background.png);
-  background-position: center bottom;
+  background-position: bottom center;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #efe7da;
+  color: #606060;
+  user-select: none;
+}
+
+.page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  color: #606060;
 }
 
 p {
@@ -65,6 +88,7 @@ ul {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -74,7 +98,7 @@ ul {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 10px;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .switch {
@@ -87,7 +111,7 @@ ul {
 }
 
 .main-bottom {
-  height: 88%;
+  /* height: 88%; */
   display: flex;
   justify-content: center;
 }
@@ -95,7 +119,7 @@ ul {
 .main-rules,
 .main-next {
   width: 100px;
-  height: 680px;
+  height: 600px;
   border: 1px solid rgba(0, 0, 0, 0.47);
   border-radius: 10px;
   text-align: center;
@@ -142,9 +166,10 @@ ul {
 
 .main-game {
   width: 400px;
-  height: 680px;
+  height: 600px;
   background: rgba(211, 159, 151, 0.497);
   border-radius: 10px;
+  position: relative;
 }
 
 .next__list {
@@ -179,14 +204,36 @@ ul {
   width: 50px;
 }
 
-@media screen and (width <= 1440px) {
+/* S   H   A   P   E   S      S   I   Z   E */
+.shapes {
+  position: absolute;
+  border: 1px solid 606060;
+}
+
+.i-shapes {
+  width: 40px;
+  height: 160px;
+  top: 440px;
+  left: 80px;
+}
+
+.o-shapes {
+  width: 80px;
+  height: 80px;
+  top: 520px;
+  left: 120px;
+}
+
+/* S   H   A   P   E   S      S   I   Z   E */
+
+@media screen and (width <= 1024px) {
   .body {
     background-size: cover;
   }
 
   .main-rules,
   .main-next {
-    height: 600px;
+    height: 450px;
   }
 
   .main-top {
@@ -195,22 +242,110 @@ ul {
 
   .main-game {
     width: 300px;
-    height: 600px;
+    height: 450px;
   }
 }
 
-@media screen and (width <= 1024px) {
+@media screen and (height < 800px) {
+  /* .main-top {
+    flex: auto;
+  } */
+}
+
+/* @media screen and (width <= 1024px) {
   .main-rules,
   .main-next {
-    height: 374px;
+    height: 420px;
   }
 
   .main-top {
-    width: 220px;
+    width: 280px;
   }
 
   .main-game {
-    width: 220px;
-    height: 374px;
+    width: 280px;
+    height: 420px;
   }
+} */
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #6060603a;
+  border-radius: 2px;
+  position: relative;
+}
+
+.main-game {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.o {
+  position: relative;
+  background-color: red;
+}
+
+.i {
+  position: relative;
+  background-color: rosybrown;
+}
+
+.i-zero::after {
+  background: url(../img/i1.png);
+}
+
+.i-one::after {
+  background: url(../img/i2.png);
+}
+
+.i-two::after {
+  background: url(../img/i3.png);
+}
+
+.i-three::after {
+  background: url(../img/i4.png);
+}
+.i-zero::after,
+.i-one::after,
+.i-two::after,
+.i-three::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  /* transform: rotate(90deg); */
+}
+
+.s {
+  position: relative;
+
+  background-color: aquamarine;
+}
+
+.z {
+  position: relative;
+
+  background-color: yellowgreen;
+}
+
+.l {
+  position: relative;
+  background-color: teal;
+}
+
+.j {
+  position: relative;
+  background-color: black;
+}
+
+.j {
+  position: relative;
+  background-color: blueviolet;
+}
+.t {
+  background-color: tomato;
 }
