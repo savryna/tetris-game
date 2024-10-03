@@ -205,69 +205,6 @@ ul {
 }
 
 /* S   H   A   P   E   S      S   I   Z   E */
-.shapes {
-  position: absolute;
-  border: 1px solid 606060;
-}
-
-.i-shapes {
-  width: 40px;
-  height: 160px;
-  top: 440px;
-  left: 80px;
-}
-
-.o-shapes {
-  width: 80px;
-  height: 80px;
-  top: 520px;
-  left: 120px;
-}
-
-/* S   H   A   P   E   S      S   I   Z   E */
-
-@media screen and (width <= 1024px) {
-  .body {
-    background-size: cover;
-  }
-
-  .main-rules,
-  .main-next {
-    height: 450px;
-  }
-
-  .main-top {
-    width: 300px;
-  }
-
-  .main-game {
-    width: 300px;
-    height: 450px;
-  }
-}
-
-@media screen and (height < 800px) {
-  /* .main-top {
-    flex: auto;
-  } */
-}
-
-/* @media screen and (width <= 1024px) {
-  .main-rules,
-  .main-next {
-    height: 420px;
-  }
-
-  .main-top {
-    width: 280px;
-  }
-
-  .main-game {
-    width: 280px;
-    height: 420px;
-  }
-} */
-
 .cell {
   width: 40px;
   height: 40px;
@@ -279,16 +216,6 @@ ul {
 .main-game {
   display: flex;
   flex-wrap: wrap;
-}
-
-.o {
-  position: relative;
-  background-color: red;
-}
-
-.i {
-  position: relative;
-  background-color: rosybrown;
 }
 
 .i-zero::after {
@@ -306,10 +233,147 @@ ul {
 .i-three::after {
   background: url(../img/i4.png);
 }
+
+.o-zero::after {
+  background: url(../img/o1.png);
+}
+
+.o-one::after {
+  background: url(../img/o2.png);
+}
+
+.o-two::after {
+  background: url(../img/o3.png);
+}
+
+.o-three::after {
+  background: url(../img/o4.png);
+}
+
+.s-zero::after {
+  background: url(../img/s1.png);
+}
+
+.s-one::after {
+  background: url(../img/s2.png);
+}
+
+.s-two::after {
+  background: url(../img/s3.png);
+}
+
+.s-three::after {
+  background: url(../img/s4.png);
+}
+
+.s-zero::after {
+  background: url(../img/s1.png);
+}
+
+.s-one::after {
+  background: url(../img/s2.png);
+}
+
+.s-two::after {
+  background: url(../img/s3.png);
+}
+
+.s-three::after {
+  background: url(../img/s4.png);
+}
+
+.z-zero::after {
+  background: url(../img/z1.png);
+}
+
+.z-one::after {
+  background: url(../img/z2.png);
+}
+
+.z-two::after {
+  background: url(../img/z3.png);
+}
+
+.z-three::after {
+  background: url(../img/z4.png);
+}
+
+.l-zero::after {
+  background: url(../img/l1.png);
+}
+
+.l-one::after {
+  background: url(../img/l2.png);
+}
+
+.l-two::after {
+  background: url(../img/l3.png);
+}
+
+.l-three::after {
+  background: url(../img/l4.png);
+}
+
+.j-zero::after {
+  background: url(../img/j1.png);
+}
+
+.j-one::after {
+  background: url(../img/j2.png);
+}
+
+.j-two::after {
+  background: url(../img/j3.png);
+}
+
+.j-three::after {
+  background: url(../img/j4.png);
+}
+
+.t-zero::after {
+  background: url(../img/t1.png);
+}
+
+.t-one::after {
+  background: url(../img/t2.png);
+}
+
+.t-two::after {
+  background: url(../img/t3.png);
+}
+
+.t-three::after {
+  background: url(../img/t4.png);
+}
+
 .i-zero::after,
 .i-one::after,
 .i-two::after,
-.i-three::after {
+.i-three::after,
+.o-zero::after,
+.o-one::after,
+.o-two::after,
+.o-three::after,
+.s-zero::after,
+.s-one::after,
+.s-two::after,
+.s-three::after,
+.z-zero::after,
+.z-one::after,
+.z-two::after,
+.z-three::after,
+.l-zero::after,
+.l-one::after,
+.l-two::after,
+.l-three::after,
+.j-zero::after,
+.j-one::after,
+.j-two::after,
+.j-three::after,
+.t-zero::after,
+.t-one::after,
+.t-two::after,
+.t-three::after {
   content: '';
   position: absolute;
   top: 0;
@@ -317,35 +381,63 @@ ul {
   width: 40px;
   height: 40px;
   background-size: contain;
-  /* transform: rotate(90deg); */
 }
 
-.s {
-  position: relative;
+/* S   H   A   P   E   S      S   I   Z   E */
 
-  background-color: aquamarine;
-}
+@media screen and (width <= 1024px) {
+  .cell {
+    width: 30px;
+    height: 30px;
+  }
 
-.z {
-  position: relative;
+  .body {
+    background-size: cover;
+  }
 
-  background-color: yellowgreen;
-}
+  .main-rules,
+  .main-next {
+    height: 450px;
+  }
 
-.l {
-  position: relative;
-  background-color: teal;
-}
+  .main-top {
+    width: 300px;
+  }
 
-.j {
-  position: relative;
-  background-color: black;
-}
+  .main-game {
+    width: 300px;
+    height: 450px;
+  }
 
-.j {
-  position: relative;
-  background-color: blueviolet;
-}
-.t {
-  background-color: tomato;
+  .i-zero::after,
+  .i-one::after,
+  .i-two::after,
+  .i-three::after,
+  .o-zero::after,
+  .o-one::after,
+  .o-two::after,
+  .o-three::after,
+  .s-zero::after,
+  .s-one::after,
+  .s-two::after,
+  .s-three::after,
+  .z-zero::after,
+  .z-one::after,
+  .z-two::after,
+  .z-three::after,
+  .l-zero::after,
+  .l-one::after,
+  .l-two::after,
+  .l-three::after,
+  .j-zero::after,
+  .j-one::after,
+  .j-two::after,
+  .j-three::after,
+  .t-zero::after,
+  .t-one::after,
+  .t-two::after,
+  .t-three::after {
+    width: 30px;
+    height: 30px;
+  }
 }

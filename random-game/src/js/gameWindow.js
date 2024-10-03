@@ -52,19 +52,16 @@ function showTetromino() {
       const cellIndex = convertPositionToIndex(rowStart + y, columnStart + x);
       mesh[cellIndex].classList.add(tetrominoType);
       allCell.push(mesh[cellIndex]);
-      // console.log(cellIndex);
     }
   }
-  const zeroCell = allCell[0];
-  zeroCell.classList.add(`${tetrominoType}-zero`);
-  const oneCell = allCell[1];
-  oneCell.classList.add(`${tetrominoType}-one`);
-  const twoCell = allCell[2];
-  twoCell.classList.add(`${tetrominoType}-two`);
-  const threeCell = allCell[3];
-  threeCell.classList.add(`${tetrominoType}-three`);
+  addStyleFromIdx(allCell, tetrominoType);
 }
 
 function convertPositionToIndex(row, column) {
   return row * GAME_SETTINGS.columns + column;
+}
+
+function addStyleFromIdx(array, style) {
+  const wordIdx = ['zero', 'one', 'two', 'three'];
+  array.forEach((elem, idx) => elem.classList.add(`${style}-${wordIdx[idx]}`));
 }
