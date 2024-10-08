@@ -28,9 +28,9 @@ export const TETROMINO_TYPES = ['o', 'i', 's', 'z', 'l', 'j', 't'];
 
 export const TETROMINO_MATRIX = {
   o: [
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
     [0, 0, 0, 0],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
     [0, 0, 0, 0],
   ],
   i: [

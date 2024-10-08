@@ -50,7 +50,7 @@ export function rotateTetromino() {
   isRotating = true;
   const rotateMatrix = reverseMatrix(transposeMatrix(tetromino.matrixBox));
   tetromino.matrixBox = rotateMatrix;
-  console.log(tetromino.columnStart);
+
   for (let y = 0; y < tetromino.matrixSize; y++) {
     for (let x = 0; x < tetromino.matrixSize; x++) {
       if (!tetromino.matrixBox[y][x]) {
