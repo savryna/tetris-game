@@ -55,7 +55,7 @@ export function drawPlayfield() {
       if (!playfield[y][x]) continue;
       const cellIndex = convertPositionToIndex(y, x);
       mesh[cellIndex].classList.add(tetrominoType);
-      console.log(mesh[cellIndex]);
+      // console.log(mesh[cellIndex]);
       //
       //  \\   //
       //   \\ //
@@ -67,6 +67,7 @@ export function drawPlayfield() {
       // addStyleFromIdx(allCell, tetrominoType);
     }
   }
+  console.log(playfield);
 }
 
 function showTetromino() {
