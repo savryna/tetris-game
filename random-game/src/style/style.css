@@ -382,6 +382,15 @@ ul {
   height: 40px;
   background-size: contain;
 }
+.o,
+.i,
+.s,
+.z,
+.l,
+.j,
+.t {
+  background-color: black;
+}
 
 /* S   H   A   P   E   S      S   I   Z   E */
 

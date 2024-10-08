@@ -1,15 +1,22 @@
-import { tetromino, showPlayField } from './gameWindow.js';
+import { TETROMINO_MATRIX, TETROMINO_TYPES } from './gameSettingStart.js';
+import { tetromino, createTetromino } from './gameWindow.js';
 import { GAME_SETTINGS } from './gameSettingStart.js';
-import { transposeMatrix, reverseMatrix } from './help.js';
+import { transposeMatrix, reverseMatrix, getRandomElem } from './help.js';
+const playfield = GAME_SETTINGS.playfield;
+// let activeTetromino = tetromino;
+// const startTetromino = structuredClone(createTetromino());
 
-const playfield = GAME_SETTINGS.initPlayField();
 let isRotating = false;
+let isLock = false;
 
 export function moveTetrominoDown() {
   tetromino.rowStart += 1;
   if (isBorder()) {
     tetromino.rowStart -= 1;
+    isRotating = true;
+    lockTetromino();
   }
+  returnTop();
 }
 
 export function moveTetrominoRight() {
@@ -17,7 +24,14 @@ export function moveTetrominoRight() {
   if (isBorder()) {
     tetromino.columnStart -= 1;
   }
-  console.log(tetromino.columnStart);
+  // if (isLock) {
+  //   tetromino.rowStart = startTetromino.rowStart;
+  //   isLock = false;
+  // }
+  returnTop();
+  // console.log('start', startTetromino);
+  // console.log('tetromino', tetromino);
+  // console.log(tetromino.columnStart);
 }
 
 export function moveTetrominoLeft() {
@@ -25,7 +39,12 @@ export function moveTetrominoLeft() {
   if (isBorder()) {
     tetromino.columnStart += 1;
   }
-  console.log(tetromino.columnStart);
+  returnTop();
+  // if (isLock) {
+  //   tetromino.rowStart = startTetromino.rowStart;
+  //   isLock = false;
+  // }
+  // console.log(tetromino.columnStart);
 }
 
 function isBorder() {
@@ -37,10 +56,14 @@ function isBorder() {
       }
       if (
         playfield[y][columnStart + x] === undefined ||
-        playfield[rowStart + y] === undefined
+        playfield[rowStart + y] === undefined ||
+        playfield[rowStart + y][columnStart + x]
       ) {
         return true;
       }
+      // if (playfield[rowStart + y][columnStart + x]) {
+      //   return false;
+      // }
     }
   }
 }
@@ -70,5 +93,36 @@ function kickWall(row, column) {
   }
   if (tetromino.columnStart + column >= 9) {
     tetromino.columnStart = 9 - column;
+  }
+}
+
+export function lockTetromino() {
+  // const playfield = GAME_SETTINGS.initPlayField();
+  // const playfield = GAME_SETTINGS.playfield;
+  const { columnStart, rowStart, matrixSize, matrixBox, tetrominoType } =
+    tetromino;
+  for (let y = 0; y < matrixSize; y++) {
+    for (let x = 0; x < matrixSize; x++) {
+      if (!matrixBox[y][x]) continue;
+      playfield[rowStart + y][columnStart + x] = tetrominoType;
+    }
+  }
+  // console.log('hihihi');
+  // console.log(playfield);
+  isRotating = false;
+  isLock = true;
+  return playfield;
+}
+
+function returnTop() {
+  const startTetromino = structuredClone(createTetromino());
+  const { rowStart: row, columnStart: column } = startTetromino;
+  if (isLock) {
+    tetromino.rowStart = row;
+    tetromino.columnStart = column;
+    tetromino.tetrominoType = getRandomElem(TETROMINO_TYPES);
+    tetromino.matrixBox = TETROMINO_MATRIX[tetromino.tetrominoType];
+    tetromino.matrixSize = tetromino.matrixBox.length;
+    isLock = false;
   }
 }

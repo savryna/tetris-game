@@ -18,10 +18,27 @@ export const GAME_SETTINGS = {
   columns: 10,
   score: 0,
   lines: 0,
-  initPlayField: () =>
-    Array.from({ length: GAME_SETTINGS.rows }, (сolumns) =>
-      Array.from({ length: GAME_SETTINGS.columns }, (cell) => 0),
-    ),
+  playfield: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+  //   initPlayField: () =>
+  //     Array.from({ length: GAME_SETTINGS.rows }, (сolumns) =>
+  //       Array.from({ length: GAME_SETTINGS.columns }, (cell) => 0),
+  //     ),
 };
 
 export const TETROMINO_TYPES = ['o', 'i', 's', 'z', 'l', 'j', 't'];

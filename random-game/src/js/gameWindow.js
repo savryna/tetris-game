@@ -1,11 +1,14 @@
 import { TETROMINO_MATRIX, TETROMINO_TYPES } from './gameSettingStart.js';
 import { getRandomElem } from './help.js';
 import { GAME_SETTINGS } from './gameSettingStart.js';
+import { lockTetromino } from './moveTetromino.js';
 
 const gameWrapper = document.querySelector('.main-game');
+const playfield = GAME_SETTINGS.playfield;
 
 function createMesh() {
-  const playfield = GAME_SETTINGS.initPlayField();
+  // const playfield = GAME_SETTINGS.initPlayField();
+  // const playfield = GAME_SETTINGS.playfield;
   Array.from({ length: playfield.length * 10 }, () => {
     const cell = document.createElement('div');
     cell.classList.add('cell');
@@ -14,14 +17,14 @@ function createMesh() {
 }
 
 export function createTetromino() {
-  const tetrominoType = getRandomElem(TETROMINO_TYPES);
-  const matrixBox = TETROMINO_MATRIX[tetrominoType];
-  const matrixSize = matrixBox.length;
+  let tetrominoType = getRandomElem(TETROMINO_TYPES);
+  let matrixBox = TETROMINO_MATRIX[tetrominoType];
+  let matrixSize = matrixBox.length;
   let columnStart =
     GAME_SETTINGS.columns / 2 - Math.floor(matrixBox.length / 2);
-  // const rowStart = -1;
-  let rowStart = 0;
-  const tetromino = {
+  let rowStart = -1;
+  // let rowStart = 0;
+  let tetromino = {
     tetrominoType,
     matrixBox,
     matrixSize,
@@ -43,8 +46,37 @@ export function showPlayField() {
     );
     cell.classList.remove(classToRemove);
   });
-
+  drawPlayfield();
   showTetromino();
+}
+
+export function drawPlayfield() {
+  const { tetrominoType } = tetromino;
+  //allCell = Array(
+  //   playfield.map((arr) => arr.filter((elem) => elem)).flat(Infinity).length,
+  // );
+  const allCell = [];
+  // );
+  for (let y = 0; y < GAME_SETTINGS.rows; y++) {
+    for (let x = 0; x < GAME_SETTINGS.columns; x++) {
+      if (!playfield[y][x]) continue;
+      // console.log(x);
+      const cellIndex = convertPositionToIndex(y, x);
+      mesh[cellIndex].classList.add(tetrominoType);
+
+      //
+      //  \\   //
+      //   \\ //
+      //    \\/      НЕ РАБОТАЕТ
+      //   //\\
+      //  //  \\
+
+      // allCell.push(mesh[cellIndex]);
+      // addStyleFromIdx(allCell, tetrominoType);
+    }
+  }
+  // console.log(tetromino.rowStart);
+  // tetromino.rowStart = 0;
 }
 
 function showTetromino() {
@@ -56,10 +88,17 @@ function showTetromino() {
       if (!matrixBox[y][x]) continue;
       if (rowStart + y < 0) continue;
       const cellIndex = convertPositionToIndex(rowStart + y, columnStart + x);
-      // mesh[cellIndex].classList.add(tetrominoType);
-      allCell.push(mesh[cellIndex]);
-      addStyleFromIdx(allCell, tetrominoType);
-      // console.log(rowStart);
+      mesh[cellIndex].classList.add(tetrominoType);
+
+      //
+      //  \\   //
+      //   \\ //
+      //    \\/      НЕ РАБОТАЕТ
+      //   //\\
+      //  //  \\
+
+      // allCell.push(mesh[cellIndex]);
+      // addStyleFromIdx(allCell, tetrominoType);
     }
   }
 }
@@ -68,6 +107,16 @@ function convertPositionToIndex(row, column) {
   return row * GAME_SETTINGS.columns + column;
 }
 
+// 0,  1,  2,  3   length = 4
+// 4,  5,  6,  7   length = 8    convertIdx = [idx - (length - 4) ]
+// 8,  9, 10, 11   length = 12
+
+//
+//  \\   //
+//   \\ //
+//    \\/      НЕ РАБОТАЕТ
+//   //\\
+//  //  \\
 function addStyleFromIdx(array, style) {
   const wordIdx = ['zero', 'one', 'two', 'three'];
   array.forEach((elem, idx) => elem.classList.add(`${style}-${wordIdx[idx]}`));
