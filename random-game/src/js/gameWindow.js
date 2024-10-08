@@ -7,8 +7,6 @@ const gameWrapper = document.querySelector('.main-game');
 const playfield = GAME_SETTINGS.playfield;
 
 function createMesh() {
-  // const playfield = GAME_SETTINGS.initPlayField();
-  // const playfield = GAME_SETTINGS.playfield;
   Array.from({ length: playfield.length * 10 }, () => {
     const cell = document.createElement('div');
     cell.classList.add('cell');
@@ -23,7 +21,6 @@ export function createTetromino() {
   let columnStart =
     GAME_SETTINGS.columns / 2 - Math.floor(matrixBox.length / 2);
   let rowStart = -1;
-  // let rowStart = 0;
   let tetromino = {
     tetrominoType,
     matrixBox,
@@ -39,8 +36,6 @@ const mesh = document.querySelectorAll('.cell');
 export const tetromino = createTetromino();
 
 export function showPlayField() {
-  // console.log(tetromino.matrixBox);
-  // const arrForImg = tetromino.matrixBox;
   const { tetrominoType } = tetromino;
   mesh.forEach((cell) => {
     const classToRemove = [...cell.classList].find((cls) =>
@@ -54,23 +49,13 @@ export function showPlayField() {
 
 export function drawPlayfield() {
   const { tetrominoType } = tetromino;
-  // console.log(tetromino.matrixBox);
-  // console.log(
-  //   convertPositionToIndex(tetromino.rowStart, tetromino.columnStart),
-  // );
-  //allCell = Array(
-  //   playfield.map((arr) => arr.filter((elem) => elem)).flat(Infinity).length,
-  // );
   const allCell = [];
-  // );
   for (let y = 0; y < GAME_SETTINGS.rows; y++) {
     for (let x = 0; x < GAME_SETTINGS.columns; x++) {
       if (!playfield[y][x]) continue;
-      // console.log(x);
       const cellIndex = convertPositionToIndex(y, x);
       mesh[cellIndex].classList.add(tetrominoType);
-      // console.log(cellIndex);
-
+      console.log(mesh[cellIndex]);
       //
       //  \\   //
       //   \\ //
@@ -82,15 +67,12 @@ export function drawPlayfield() {
       // addStyleFromIdx(allCell, tetrominoType);
     }
   }
-  // console.log(tetromino.rowStart);
-  // tetromino.rowStart = 0;
 }
 
 function showTetromino() {
   const { tetrominoType, matrixSize, matrixBox, rowStart, columnStart } =
     tetromino;
   const allCell = [];
-  // const arrForImg = [];
   for (let y = 0; y < matrixSize; y++) {
     for (let x = 0; x < matrixSize; x++) {
       if (!matrixBox[y][x]) continue;
@@ -98,19 +80,10 @@ function showTetromino() {
       const cellIndex = convertPositionToIndex(rowStart + y, columnStart + x);
       // mesh[cellIndex].classList.add(tetrominoType);
 
-      // const testCellIndex = convertPositionToIndex(
-      //   tetromino.rowStart + y,
-      //   tetromino.columnStart + x,
-      // );
-
-      // console.log(Array.from(mesh[cellIndex]).length);
-      // addStyleFromIdx(Array.from(mesh[cellIndex]), tetrominoType);
-      // arrForImg.push(mesh[testCellIndex]);
-      // addStyleFromIdx(arrForImg, tetrominoType);
       //
       //  \\   //
       //   \\ //
-      //    \\/      НЕ РАБОТАЕТ
+      //    \\/      НЕ РАБОТАЕТ(плохо работает)
       //   //\\
       //  //  \\
 
@@ -131,7 +104,7 @@ function convertPositionToIndex(row, column) {
 //
 //  \\   //
 //   \\ //
-//    \\/      НЕ РАБОТАЕТ
+//    \\/      НЕ РАБОТАЕТ(плохо работает)
 //   //\\
 //  //  \\
 function addStyleFromIdx(array, style) {
