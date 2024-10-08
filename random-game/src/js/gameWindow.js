@@ -54,7 +54,8 @@ export function drawPlayfield() {
     for (let x = 0; x < GAME_SETTINGS.columns; x++) {
       if (!playfield[y][x]) continue;
       const cellIndex = convertPositionToIndex(y, x);
-      mesh[cellIndex].classList.add(tetrominoType);
+      addStyle(y, x, cellIndex);
+      // mesh[cellIndex].classList.add(tetrominoType);
       // console.log(mesh[cellIndex]);
       //
       //  \\   //
@@ -62,12 +63,85 @@ export function drawPlayfield() {
       //    \\/      НЕ РАБОТАЕТ
       //   //\\
       //  //  \\
-
+      console.log(tetrominoType);
+      // addStyle(tetrominoType);
+      // createTypeIdxArr('o');
+      // console.log(cellIndex);
       // allCell.push(mesh[cellIndex]);
       // addStyleFromIdx(allCell, tetrominoType);
     }
   }
-  console.log(playfield);
+  // console.log(playfield);
+}
+
+function addStyle(typeTetromino) {
+  // const typeName = playfield[row][column];
+  const wordIdx = ['zero', 'one', 'two', 'three'];
+  const o = createTypeIdxArr('o').forEach((idxNum, idx, arr) =>
+    mesh[idxNum].classList.add(
+      `o-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    ),
+  );
+  const i = createTypeIdxArr('i').forEach((idxNum, idx, arr) =>
+    mesh[idxNum].classList.add(
+      `i-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    ),
+  );
+  const s = createTypeIdxArr('s').forEach((idxNum, idx, arr) =>
+    mesh[idxNum].classList.add(
+      `s-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    ),
+  );
+  const z = createTypeIdxArr('z').forEach((idxNum, idx, arr) => {
+    console.log(Math.abs(idx - (arr.length - 4)));
+    mesh[idxNum].classList.add(
+      `z-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    );
+  });
+  const t = createTypeIdxArr('t').forEach((idxNum, idx, arr) => {
+    // console.log(idx - (arr.length - 4));
+    mesh[idxNum].classList.add(
+      `t-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    );
+  });
+  const j = createTypeIdxArr('j').forEach((idxNum, idx, arr) => {
+    // console.log(idx - (arr.length - 4));
+    mesh[idxNum].classList.add(
+      `j-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    );
+  });
+  const l = createTypeIdxArr('l').forEach((idxNum, idx, arr) => {
+    // console.log(idx - (arr.length - 4));
+    mesh[idxNum].classList.add(
+      `l-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    );
+  });
+  // console.log(tetrominoTypeIdx[typeTetromino]);
+
+  // mesh[idx].classList.add('hi');
+}
+
+// на утро: здесь я хочу для каждого key заменить его на соответствующий индекс из mesh
+function createTypeIdxArr(key) {
+  const arr = [];
+  let res = [];
+  let keyElem;
+  for (let y = 0; y < playfield.length; y++) {
+    for (let x = 0; x < playfield[0].length; x++) {
+      if (!playfield[y][x]) continue;
+      if (playfield[y][x] === key) {
+        // arr.push(playfield[y][x]);
+        // keyElem = arr[0];
+        arr.push(convertPositionToIndex(y, x));
+        // res = arr.map((elem) => (elem = convertPositionToIndex(y, x)));
+      }
+      // if(playfield)
+      // const cellIndex = convertPositionToIndex(y, x);
+      // console.log(cellIndex);
+      // res = arr.filter((elem) => elem === key);
+    }
+  }
+  return arr;
 }
 
 function showTetromino() {
