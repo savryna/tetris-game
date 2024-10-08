@@ -39,6 +39,8 @@ const mesh = document.querySelectorAll('.cell');
 export const tetromino = createTetromino();
 
 export function showPlayField() {
+  // console.log(tetromino.matrixBox);
+  // const arrForImg = tetromino.matrixBox;
   const { tetrominoType } = tetromino;
   mesh.forEach((cell) => {
     const classToRemove = [...cell.classList].find((cls) =>
@@ -52,6 +54,10 @@ export function showPlayField() {
 
 export function drawPlayfield() {
   const { tetrominoType } = tetromino;
+  // console.log(tetromino.matrixBox);
+  // console.log(
+  //   convertPositionToIndex(tetromino.rowStart, tetromino.columnStart),
+  // );
   //allCell = Array(
   //   playfield.map((arr) => arr.filter((elem) => elem)).flat(Infinity).length,
   // );
@@ -63,6 +69,7 @@ export function drawPlayfield() {
       // console.log(x);
       const cellIndex = convertPositionToIndex(y, x);
       mesh[cellIndex].classList.add(tetrominoType);
+      // console.log(cellIndex);
 
       //
       //  \\   //
@@ -83,13 +90,23 @@ function showTetromino() {
   const { tetrominoType, matrixSize, matrixBox, rowStart, columnStart } =
     tetromino;
   const allCell = [];
+  // const arrForImg = [];
   for (let y = 0; y < matrixSize; y++) {
     for (let x = 0; x < matrixSize; x++) {
       if (!matrixBox[y][x]) continue;
       if (rowStart + y < 0) continue;
       const cellIndex = convertPositionToIndex(rowStart + y, columnStart + x);
-      mesh[cellIndex].classList.add(tetrominoType);
+      // mesh[cellIndex].classList.add(tetrominoType);
 
+      // const testCellIndex = convertPositionToIndex(
+      //   tetromino.rowStart + y,
+      //   tetromino.columnStart + x,
+      // );
+
+      // console.log(Array.from(mesh[cellIndex]).length);
+      // addStyleFromIdx(Array.from(mesh[cellIndex]), tetrominoType);
+      // arrForImg.push(mesh[testCellIndex]);
+      // addStyleFromIdx(arrForImg, tetrominoType);
       //
       //  \\   //
       //   \\ //
@@ -97,8 +114,8 @@ function showTetromino() {
       //   //\\
       //  //  \\
 
-      // allCell.push(mesh[cellIndex]);
-      // addStyleFromIdx(allCell, tetrominoType);
+      allCell.push(mesh[cellIndex]);
+      addStyleFromIdx(allCell, tetrominoType);
     }
   }
 }
