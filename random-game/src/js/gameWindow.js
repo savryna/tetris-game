@@ -74,48 +74,88 @@ export function drawPlayfield() {
   // console.log(playfield);
 }
 
+// mesh[idxNum].classList.add(`l-${wordIdx[(idx % 4) + 1]}`);
+
 function addStyle(typeTetromino) {
   // const typeName = playfield[row][column];
   const wordIdx = ['zero', 'one', 'two', 'three'];
-  const o = createTypeIdxArr('o').forEach((idxNum, idx, arr) =>
-    mesh[idxNum].classList.add(
-      `o-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    ),
+  const o = createTypeIdxArr('o').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`o-${wordIdx[columnIdx]}`);
+    },
+    // mesh[idxNum].classList.add(
+    //   `o-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    // ),
   );
-  const i = createTypeIdxArr('i').forEach((idxNum, idx, arr) =>
-    mesh[idxNum].classList.add(
-      `i-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    ),
+  const i = createTypeIdxArr('i').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`i-${wordIdx[columnIdx]}`);
+    },
+    // mesh[idxNum].classList.add(
+    //   `i-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    // ),
   );
-  const s = createTypeIdxArr('s').forEach((idxNum, idx, arr) =>
-    mesh[idxNum].classList.add(
-      `s-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    ),
+  const s = createTypeIdxArr('s').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`s-${wordIdx[columnIdx]}`);
+    },
+    // mesh[idxNum].classList.add(
+    //   `s-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    // ),
   );
-  const z = createTypeIdxArr('z').forEach((idxNum, idx, arr) => {
-    console.log(Math.abs(idx - (arr.length - 4)));
-    mesh[idxNum].classList.add(
-      `z-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    );
-  });
-  const t = createTypeIdxArr('t').forEach((idxNum, idx, arr) => {
-    // console.log(idx - (arr.length - 4));
-    mesh[idxNum].classList.add(
-      `t-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    );
-  });
-  const j = createTypeIdxArr('j').forEach((idxNum, idx, arr) => {
-    // console.log(idx - (arr.length - 4));
-    mesh[idxNum].classList.add(
-      `j-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    );
-  });
-  const l = createTypeIdxArr('l').forEach((idxNum, idx, arr) => {
-    // console.log(idx - (arr.length - 4));
-    mesh[idxNum].classList.add(
-      `l-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
-    );
-  });
+  const z = createTypeIdxArr('z').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`z-${wordIdx[columnIdx]}`);
+    },
+    //   {
+    //   // console.log(Math.abs(idx - (arr.length - 4)));
+    //   mesh[idxNum].classList.add(
+    //     `z-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    //   );
+    // }
+  );
+  const t = createTypeIdxArr('t').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`t-${wordIdx[columnIdx]}`);
+    },
+    //   {
+    //   // console.log(idx - (arr.length - 4));
+    //   mesh[idxNum].classList.add(
+    //     `t-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    //   );
+    // }
+  );
+  const j = createTypeIdxArr('j').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`j-${wordIdx[columnIdx]}`);
+    },
+
+    //   {
+    //   // console.log(idx - (arr.length - 4));
+    //   mesh[idxNum].classList.add(
+    //     `j-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    //   );
+    // }
+  );
+  const l = createTypeIdxArr('l').forEach(
+    (idxFromMesh, idx, arr) => {
+      const columnIdx = idx % 4;
+      mesh[idxFromMesh].classList.add(`l-${wordIdx[columnIdx]}`);
+    },
+
+    //   {
+    //   // console.log(idx - (arr.length - 4));
+    //   mesh[idxNum].classList.add(
+    //     `l-${wordIdx[Math.abs(idx - (arr.length - 4))]}`,
+    //   );
+    // }
+  );
   // console.log(tetrominoTypeIdx[typeTetromino]);
 
   // mesh[idx].classList.add('hi');
@@ -125,20 +165,12 @@ function addStyle(typeTetromino) {
 function createTypeIdxArr(key) {
   const arr = [];
   let res = [];
-  let keyElem;
   for (let y = 0; y < playfield.length; y++) {
     for (let x = 0; x < playfield[0].length; x++) {
       if (!playfield[y][x]) continue;
       if (playfield[y][x] === key) {
-        // arr.push(playfield[y][x]);
-        // keyElem = arr[0];
         arr.push(convertPositionToIndex(y, x));
-        // res = arr.map((elem) => (elem = convertPositionToIndex(y, x)));
       }
-      // if(playfield)
-      // const cellIndex = convertPositionToIndex(y, x);
-      // console.log(cellIndex);
-      // res = arr.filter((elem) => elem === key);
     }
   }
   return arr;
