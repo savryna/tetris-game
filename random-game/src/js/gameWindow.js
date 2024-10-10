@@ -55,8 +55,8 @@ export function drawPlayfield() {
     for (let x = 0; x < GAME_SETTINGS.columns; x++) {
       if (!playfield[y][x]) continue;
       const cellIndex = convertPositionToIndex(y, x);
-      // addStyle(y, x, cellIndex);
-      mesh[cellIndex].classList.add(tetrominoType);
+      addStyle(y, x, cellIndex);
+      // mesh[cellIndex].classList.add(tetrominoType);
       // console.log(mesh[cellIndex]);
       //
       //  \\   //
@@ -195,8 +195,8 @@ function showTetromino() {
       //   //\\
       //  //  \\
 
-      // allCell.push(mesh[cellIndex]);
-      // addStyleFromIdx(allCell, tetrominoType);
+      allCell.push(mesh[cellIndex]);
+      addStyleFromIdx(allCell, tetrominoType);
     }
   }
 }

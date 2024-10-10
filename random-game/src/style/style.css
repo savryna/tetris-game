@@ -175,9 +175,6 @@ ul {
   position: relative;
 }
 
-.main-game > div {
-}
-
 .next__list {
   display: flex;
   flex-direction: column;
@@ -214,10 +211,10 @@ ul {
 .main-game > div {
   width: 40px;
   height: 40px;
-  /* border: 1px solid #6060603a; */
+  border: 1px solid #6060603a;
+  /* border: 1px solid #484747; */
   border-radius: 2px;
   position: relative;
-  background-color: #606060;
 }
 
 /* .main-game {

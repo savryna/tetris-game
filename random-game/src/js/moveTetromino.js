@@ -2,6 +2,7 @@ import { TETROMINO_MATRIX, TETROMINO_TYPES } from './gameSettingStart.js';
 import { tetromino, createTetromino } from './gameWindow.js';
 import { GAME_SETTINGS } from './gameSettingStart.js';
 import { transposeMatrix, reverseMatrix, getRandomElem } from './help.js';
+import { updatePlayefield } from './line.js';
 const playfield = GAME_SETTINGS.playfield;
 // let activeTetromino = tetromino;
 // const startTetromino = structuredClone(createTetromino());
@@ -61,9 +62,6 @@ function isBorder() {
       ) {
         return true;
       }
-      // if (playfield[rowStart + y][columnStart + x]) {
-      //   return false;
-      // }
     }
   }
 }
@@ -97,8 +95,6 @@ function kickWall(row, column) {
 }
 
 export function lockTetromino() {
-  // const playfield = GAME_SETTINGS.initPlayField();
-  // const playfield = GAME_SETTINGS.playfield;
   const { columnStart, rowStart, matrixSize, matrixBox, tetrominoType } =
     tetromino;
   for (let y = 0; y < matrixSize; y++) {
@@ -107,8 +103,6 @@ export function lockTetromino() {
       playfield[rowStart + y][columnStart + x] = tetrominoType;
     }
   }
-  // console.log('hihihi');
-  // console.log(playfield);
   isRotating = false;
   isLock = true;
   return playfield;
@@ -125,4 +119,5 @@ function returnTop() {
     tetromino.matrixSize = tetromino.matrixBox.length;
     isLock = false;
   }
+  updatePlayefield();
 }

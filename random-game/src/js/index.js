@@ -12,7 +12,7 @@ import {
   rotateTetromino,
 } from './moveTetromino.js';
 
-import { checkFullLine, updatePlayefield } from './line.js';
+// import { checkFullLine, updatePlayefield } from './line.js';
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowDown') moveTetrominoDown();
