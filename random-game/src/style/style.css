@@ -165,11 +165,17 @@ ul {
 }
 
 .main-game {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  grid-template-rows: repeat(15, auto);
   width: 400px;
   height: 600px;
   background: rgba(211, 159, 151, 0.497);
   border-radius: 10px;
   position: relative;
+}
+
+.main-game > div {
 }
 
 .next__list {
@@ -205,18 +211,19 @@ ul {
 }
 
 /* S   H   A   P   E   S      S   I   Z   E */
-.cell {
+.main-game > div {
   width: 40px;
   height: 40px;
-  border: 1px solid #6060603a;
+  /* border: 1px solid #6060603a; */
   border-radius: 2px;
   position: relative;
+  background-color: #606060;
 }
 
-.main-game {
+/* .main-game {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
 .i-zero::after {
   background: url(../img/i1.png);
@@ -389,13 +396,14 @@ ul {
 .l,
 .j,
 .t {
-  background-color: black;
+  border: 2px solid #606060;
+  background: url(../img/t2.png);
 }
 
 /* S   H   A   P   E   S      S   I   Z   E */
 
 @media screen and (width <= 1024px) {
-  .cell {
+  .main-game > div {
     width: 30px;
     height: 30px;
   }

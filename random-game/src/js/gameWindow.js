@@ -37,12 +37,13 @@ export const tetromino = createTetromino();
 
 export function showPlayField() {
   const { tetrominoType } = tetromino;
-  mesh.forEach((cell) => {
-    const classToRemove = [...cell.classList].find((cls) =>
-      cls.startsWith(tetrominoType),
-    );
-    cell.classList.remove(classToRemove);
-  });
+  // mesh.forEach((cell) => {
+  //   const classToRemove = [...cell.classList].find((cls) =>
+  //     cls.startsWith(tetrominoType),
+  //   );
+  //   cell.classList.remove(classToRemove);
+  // });
+  mesh.forEach((cell) => cell.removeAttribute('class'));
   drawPlayfield();
   showTetromino();
 }
