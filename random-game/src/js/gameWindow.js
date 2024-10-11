@@ -64,7 +64,7 @@ export function drawPlayfield() {
       //    \\/      НЕ РАБОТАЕТ
       //   //\\
       //  //  \\
-      console.log(tetrominoType);
+      // console.log(tetrominoType);
       // addStyle(tetrominoType);
       // createTypeIdxArr('o');
       // console.log(cellIndex);

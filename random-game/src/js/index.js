@@ -10,6 +10,8 @@ import {
   moveTetrominoLeft,
   moveTetrominoRight,
   rotateTetromino,
+  nextTetrominoQeue,
+  setNextImg,
 } from './moveTetromino.js';
 
 // import { checkFullLine, updatePlayefield } from './line.js';
@@ -27,4 +29,7 @@ document.addEventListener('keydown', (event) => {
   }
   showPlayField();
 });
+
+setNextImg(nextTetrominoQeue[0].tetrominoType);
+// console.log(nextTetrominoQeue);
 showPlayField();

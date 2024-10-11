@@ -105,19 +105,51 @@ export function lockTetromino() {
   }
   isRotating = false;
   isLock = true;
-  return playfield;
+  updatePlayefield();
+  // const nextTetromino = createNextTetromino();
+  // return nextTetromino;
 }
+
+export const nextTetrominoQeue = [createNextTetromino(), createNextTetromino()];
 
 function returnTop() {
   const startTetromino = structuredClone(createTetromino());
   const { rowStart: row, columnStart: column } = startTetromino;
   if (isLock) {
-    tetromino.rowStart = row;
-    tetromino.columnStart = column;
-    tetromino.tetrominoType = getRandomElem(TETROMINO_TYPES);
-    tetromino.matrixBox = TETROMINO_MATRIX[tetromino.tetrominoType];
-    tetromino.matrixSize = tetromino.matrixBox.length;
+    // createNextTetromino();
+    const nextTImg = nextTetrominoQeue[1];
+    const nextT = nextTetrominoQeue.shift();
+    const {
+      rowStart: nextRowStart,
+      columnStart: nextColumnStart,
+      tetrominoType: nextTetrominoType,
+      matrixBox: nextMatrixBox,
+      matrixSize: nextMatrixSize,
+    } = nextT;
+    setNextImg(nextTImg.tetrominoType);
+
+    // nextTetrominoQeue;
+    nextTetrominoQeue.push(createNextTetromino());
+    tetromino.rowStart = nextRowStart;
+    tetromino.columnStart = nextColumnStart;
+    tetromino.tetrominoType = nextTetrominoType;
+    tetromino.matrixBox = nextMatrixBox;
+    tetromino.matrixSize = nextMatrixSize;
+    console.log(nextTetrominoQeue);
+    // setNextImg(nextTetrominoQeue[1].tetrominoType);
     isLock = false;
   }
-  updatePlayefield();
+}
+
+function createNextTetromino() {
+  const nextTetromino = structuredClone(createTetromino());
+  return nextTetromino;
+}
+
+const nextTetrominoImg = document.querySelector('.next__img');
+
+export function setNextImg(type) {
+  // const nextType = createNextTetromino().tetrominoType;
+  nextTetrominoImg.removeAttribute('class');
+  nextTetrominoImg.classList.add('next__img', `${type}-img`);
 }

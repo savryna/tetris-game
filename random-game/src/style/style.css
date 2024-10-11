@@ -179,18 +179,61 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 60px;
+  align-items: center;
 }
 
 .j-img {
-  width: 33.5px;
+  width: 50px;
+  height: 75px;
+  background: url(../img/j.png);
+  background-size: contain;
 }
 
 .i-img {
-  width: 16.75px;
+  width: 25px;
+  height: 100px;
+  background: url(../img/i.png);
+  background-size: contain;
 }
 
 .o-img {
-  width: 33.5px;
+  width: 50px;
+  height: 50px;
+  background: url(../img/o.png);
+  background-size: contain;
+}
+
+.l-img {
+  width: 50px;
+  height: 75px;
+  background: url(../img/l.png);
+  background-size: contain;
+}
+
+.s-img {
+  width: 75px;
+  height: 100px;
+  background: url(../img/s.png);
+  background-size: contain;
+}
+
+.z-img {
+  width: 75px;
+  height: 100px;
+  background: url(../img/z.png);
+  background-size: contain;
+}
+
+.t-img {
+  width: 75px;
+  height: 50px;
+
+  background: url(../img/t.png);
+  background-size: contain;
+}
+
+.next__img {
+  background-repeat: no-repeat;
 }
 
 .footer {
