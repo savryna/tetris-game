@@ -2,7 +2,7 @@ import { GAME_SETTINGS } from './gameSettingStart';
 
 const playfield = GAME_SETTINGS.playfield;
 
-function checkFullLine() {
+export function checkFullLine() {
   const lineForDelete = new Set();
   for (let y = 0; y < playfield.length; y++) {
     const line = playfield[y];

@@ -2,7 +2,10 @@ import { TETROMINO_MATRIX, TETROMINO_TYPES } from './gameSettingStart.js';
 import { tetromino, createTetromino } from './gameWindow.js';
 import { GAME_SETTINGS } from './gameSettingStart.js';
 import { transposeMatrix, reverseMatrix, getRandomElem } from './help.js';
-import { updatePlayefield } from './line.js';
+import { updatePlayefield, checkFullLine } from './line.js';
+import { countScore } from './score.js';
+import { win } from './win.js';
+
 const playfield = GAME_SETTINGS.playfield;
 // let activeTetromino = tetromino;
 // const startTetromino = structuredClone(createTetromino());
@@ -94,6 +97,8 @@ function kickWall(row, column) {
   }
 }
 
+const scoreHtmlElem = document.querySelector('.score>span');
+
 export function lockTetromino() {
   const { columnStart, rowStart, matrixSize, matrixBox, tetrominoType } =
     tetromino;
@@ -105,7 +110,12 @@ export function lockTetromino() {
   }
   isRotating = false;
   isLock = true;
+  // countScore(checkFullLine());
+  scoreHtmlElem.innerHTML = countScore(checkFullLine());
+
   updatePlayefield();
+  // мб setTimeout
+  setTimeout(() => win(countScore(checkFullLine())), 500);
   // const nextTetromino = createNextTetromino();
   // return nextTetromino;
 }
@@ -135,7 +145,7 @@ function returnTop() {
     tetromino.tetrominoType = nextTetrominoType;
     tetromino.matrixBox = nextMatrixBox;
     tetromino.matrixSize = nextMatrixSize;
-    console.log(nextTetrominoQeue);
+    // console.log(nextTetrominoQeue);
     // setNextImg(nextTetrominoQeue[1].tetrominoType);
     isLock = false;
   }
