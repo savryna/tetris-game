@@ -12,6 +12,7 @@ export function countScore(set) {
   let lineWeight = 0;
   if (isCrossCheck) {
     lineWeight = 496;
+    // lineWeight = 1984;
   }
   if (isNormalGame) {
     lineWeight = 64;

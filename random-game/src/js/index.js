@@ -33,3 +33,6 @@ document.addEventListener('keydown', (event) => {
 setNextImg(nextTetrominoQeue[0].tetrominoType);
 // console.log(nextTetrominoQeue);
 showPlayField();
+
+const modalWin = document.querySelector('.modal-win');
+modalWin.showModal();
