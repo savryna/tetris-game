@@ -1,4 +1,4 @@
-import { GAME_SETTINGS } from './gameSettingStart';
+import { GAME_SETTINGS } from './gameSettingStart.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
