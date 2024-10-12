@@ -500,78 +500,66 @@ ul {
 }
 
 .modal-win[open] {
-  padding: 0;
+  padding: 30px;
   border: none;
   outline: none;
-  background-color: rgb(255 226 222 / 50%);
+  /* background-color: rgb(255 226 222 / 50%); */
+  background: url(../img/win-bg.webp);
+  filter: drop-shadow(4px 5px 10px #606060);
+  background-size: contain;
   width: 402px;
   height: 400px;
-  padding: 1px;
+  padding: 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .modal-win::backdrop {
   backdrop-filter: blur(40px);
 }
 
-.modal-win-title {
-  width: 400px;
-  height: 200px;
-  position: relative;
-  cursor: pointer;
-}
-
-.modal-win-title svg {
-  fill: transparent;
-  transition: all 0.3s ease;
-}
-
-.modal-win-title:hover svg {
-  fill: red;
-}
-
-.modal-win-title > span,
-.play-again > span,
-.total-score > span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .play-again {
-  margin-top: -52px;
-  margin-left: -2px;
-  width: 400px;
-  height: 153px;
-  position: relative;
+  background: url(../img/svg/top-btn.svg);
+  width: 144px;
+  height: 90px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center 12px;
+  transition: filter 0.3s ease;
+  will-change: filter;
+  backface-visibility: hidden;
 }
 
-.play-again svg {
-  fill: red;
-  transition: all 0.3s ease;
-}
-
-.play-again:hover svg {
-  fill: red;
+.play-again:hover {
+  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(-50deg)
+    saturate(2);
 }
 
 .total-score {
-  margin-top: -31px;
-  margin-left: -3px;
-  width: 400px;
-  height: 124px;
-  position: relative;
+  margin-top: -20px;
+  background: url(../img/svg/bottom-btn.svg);
+  width: 150px;
+  height: 90px;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  transition: filter 0.3s ease;
+  will-change: filter;
+  backface-visibility: hidden;
 }
 
-.total-score svg {
-  fill: transparent;
-  transition: all 0.3s ease;
-}
-
-.total-score:hover svg {
-  fill: red;
+.total-score:hover {
+  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(-50deg)
+    saturate(2);
 }
