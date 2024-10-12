@@ -23,16 +23,19 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowUp') {
     rotateTetromino();
   }
-  if (event.code === 'KeyZ') {
-    checkFullLine();
-    updatePlayefield();
-  }
   showPlayField();
 });
 
 setNextImg(nextTetrominoQeue[0].tetrominoType);
 // console.log(nextTetrominoQeue);
+
 showPlayField();
 
-const modalWin = document.querySelector('.modal-win');
-modalWin.showModal();
+const playAgain = document.querySelector('.play-again');
+playAgain.addEventListener('click', () => showPlayField());
+// const modalWin = document.querySelector('.modal-win');
+// modalWin.showModal();
+setInterval(() => {
+  moveTetrominoDown();
+  showPlayField();
+}, 1000);
