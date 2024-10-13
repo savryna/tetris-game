@@ -19,7 +19,6 @@ export function moveTetrominoDown() {
   if (isBorder()) {
     tetromino.rowStart -= 1;
     isRotating = true;
-    // console.log(tetromino);
     lockTetromino();
   }
   // returnTop();

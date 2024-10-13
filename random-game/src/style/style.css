@@ -530,6 +530,7 @@ ul {
   /* background-color: rgb(255 226 222 / 50%); */
   filter: drop-shadow(4px 5px 10px #606060);
   background-size: contain;
+  background-repeat: no-repeat;
   width: 402px;
   height: 400px;
   padding: 20px;
@@ -622,8 +623,14 @@ ul {
 .total-list {
   flex: 1;
   backdrop-filter: blur(10px);
+  padding: 7px 0px 7px 40px;
+  margin: 0;
 }
 
 .total-item {
   list-style: decimal;
+}
+
+.total-item:not(:last-child) {
+  margin-bottom: 3px;
 }
