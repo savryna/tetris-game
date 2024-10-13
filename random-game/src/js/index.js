@@ -36,6 +36,15 @@ const winModal = document.querySelector('.modal-win');
 const loseModal = document.querySelector('.modal-lose');
 const totalScorePause = document.querySelector('.total-score-pause');
 const totalScoreOther = document.querySelector('.total-score-other');
+
+const allModals = [
+  startModal,
+  pauseModal,
+  winModal,
+  loseModal,
+  totalScoreOther,
+  totalScorePause,
+];
 startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
@@ -66,10 +75,10 @@ document.addEventListener('keydown', (event) => {
 
 playBtn.forEach((btn) =>
   btn.addEventListener('click', () => {
-    startModal.close();
-    totalScoreOther.close();
+    closeModal(allModals);
     play();
     document.removeEventListener('keydown', blockKeyboard);
+    startOver();
   }),
 );
 
@@ -102,19 +111,50 @@ function startOver() {
   showPlayField();
   cleanPlayfield();
   resetScore();
-  pauseModal.close();
-  winModal.close();
-  loseModal.close();
+  closeModal(allModals);
+  // pauseModal.close();
+  // winModal.close();
+  // loseModal.close();
   mesh.forEach((cell) => cell.removeAttribute('class'));
   play();
 }
 
 const totalScoreBtns = [...document.querySelectorAll('button.total-score')];
 
-const totalScoreBtnMainMenu = totalScoreBtns[0];
-console.log(totalScoreBtns);
-totalScoreBtnMainMenu.addEventListener('click', () => {
-  console.log('hi');
-  totalScoreOther.showModal();
-  startModal.close();
+const totalScoreBtnOther = [
+  totalScoreBtns[0],
+  totalScoreBtns[2],
+  totalScoreBtns[3],
+];
+
+const totalScoreBtnPause = totalScoreBtns[1];
+
+totalScoreBtnOther.forEach((btn) =>
+  btn.addEventListener('click', () => {
+    closeModal(allModals);
+    totalScoreOther.showModal();
+  }),
+);
+
+totalScoreBtnPause.addEventListener('click', () => {
+  closeModal(allModals);
+  totalScorePause.showModal();
 });
+
+const mainMenuBtn = document.querySelectorAll('.main-menu');
+
+mainMenuBtn.forEach((btn) =>
+  btn.addEventListener('click', () => {
+    closeModal(allModals);
+    startModal.showModal();
+  }),
+);
+
+function closeModal(modals) {
+  modals.forEach((modal) => {
+    console.log(modal);
+    if (modal.hasAttribute('open')) {
+      modal.close();
+    }
+  });
+}

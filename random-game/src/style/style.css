@@ -576,7 +576,8 @@ ul {
   filter: grayscale(50%);
 }
 
-.total-score {
+.total-score,
+.main-menu {
   margin-top: -20px;
   background: url(../img/svg/bottom-btn.svg);
   width: 150px;
@@ -599,8 +600,30 @@ ul {
   color: #efe7da;
   font-size: 23px;
   font-weight: 800;
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal-total-score[open] {
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 130px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-list {
+  flex: 1;
+  backdrop-filter: blur(10px);
+}
+
+.total-item {
+  list-style: decimal;
 }
