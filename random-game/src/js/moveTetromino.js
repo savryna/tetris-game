@@ -5,6 +5,7 @@ import { transposeMatrix, reverseMatrix, getRandomElem } from './help.js';
 import { updatePlayefield, checkFullLine } from './line.js';
 import { countScore } from './score.js';
 import { win } from './win.js';
+import { checkFullPlayfield, lose } from './lose.js';
 
 const playfield = GAME_SETTINGS.playfield;
 // let activeTetromino = tetromino;
@@ -18,7 +19,7 @@ export function moveTetrominoDown() {
   if (isBorder()) {
     tetromino.rowStart -= 1;
     isRotating = true;
-    console.log(tetromino);
+    // console.log(tetromino);
     lockTetromino();
   }
   returnTop();
@@ -64,7 +65,7 @@ function isBorder() {
         playfield[rowStart + y] === undefined ||
         playfield[rowStart + y][columnStart + x]
       ) {
-        console.log('true');
+        // console.log('true');
         return true;
       }
     }
@@ -115,6 +116,7 @@ export function lockTetromino() {
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
 
   updatePlayefield();
+  lose(checkFullPlayfield());
   setTimeout(() => win(countScore(checkFullLine())), 700);
 }
 

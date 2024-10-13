@@ -33,6 +33,7 @@ const startModal = document.querySelector('.modal-start');
 const playBtn = document.querySelector('.play');
 const pauseModal = document.querySelector('.modal-pause');
 const winModal = document.querySelector('.modal-win');
+const loseModal = document.querySelector('.modal-lose');
 
 startModal.showModal();
 
@@ -47,17 +48,18 @@ document.addEventListener('keydown', (event) => {
       rotateTetromino();
     }
 
-    if (event.code === 'Space') {
-      if (!isPlaying) {
-        play();
-        pauseModal.close();
-      } else {
-        pause();
-        pauseModal.showModal();
-      }
-    }
-
+    console.log(isPlaying);
     showPlayField();
+  }
+
+  if (event.code === 'Space') {
+    if (!isPlaying) {
+      play();
+      pauseModal.close();
+    } else {
+      pause();
+      pauseModal.showModal();
+    }
   }
 });
 
@@ -67,9 +69,9 @@ playBtn.addEventListener('click', () => {
   document.removeEventListener('keydown', blockKeyboard);
 });
 
-const startOverBtn = document.querySelector('.start-over');
+const startOverBtn = document.querySelectorAll('.start-over');
 const playAgainBtn = document.querySelector('.play-again');
-const restartGame = [startOverBtn, playAgainBtn];
+const restartGame = [playAgainBtn, ...startOverBtn];
 const mesh = document.querySelectorAll('.cell');
 
 // П Е Р Е Д Е Л А Т Ь
@@ -98,6 +100,7 @@ function startOver() {
   resetScore();
   pauseModal.close();
   winModal.close();
+  loseModal.close();
   mesh.forEach((cell) => cell.removeAttribute('class'));
   play();
 }

@@ -510,9 +510,14 @@ ul {
   background: url(../img/pause-bg.webp);
 }
 
+.modal-lose {
+  background: url(../img/lose-bg.webp);
+}
+
 .modal-win[open],
 .modal-start[open],
-.modal-pause[open] {
+.modal-pause[open],
+.modal-lose[open] {
   overflow: hidden;
   padding: 30px;
   border: none;
@@ -537,7 +542,8 @@ ul {
 
 .modal-win::backdrop,
 .modal-start::backdrop,
-.modal-pause::backdrop {
+.modal-pause::backdrop,
+.modal-lose::backdrop {
   backdrop-filter: blur(40px);
 }
 

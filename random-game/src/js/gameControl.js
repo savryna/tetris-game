@@ -30,5 +30,4 @@ export function cleanPlayfield() {
   for (let y = 0; y < GAME_SETTINGS.rows; y++) {
     playfield[y] = new Array(GAME_SETTINGS.columns).fill(0);
   }
-  console.log(playfield);
 }

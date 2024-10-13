@@ -224,7 +224,6 @@ export function clearTetromino() {
   const startTetromino = structuredClone(createTetromino());
   const { rowStart, columnStart, tetrominoType, matrixBox, matrixSize } =
     startTetromino;
-  console.log(tetromino);
   tetromino.rowStart = rowStart;
   tetromino.columnStart = columnStart;
   tetromino.tetrominoType = tetrominoType;
