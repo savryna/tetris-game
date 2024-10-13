@@ -56,7 +56,6 @@ document.addEventListener('keydown', (event) => {
 
     showPlayField();
   }
-
   if (event.code === 'Space') {
     if (!isPlaying) {
       play();
@@ -71,11 +70,16 @@ document.addEventListener('keydown', (event) => {
 playBtn.forEach((btn) =>
   btn.addEventListener('click', () => {
     closeModal(allModals);
-    play();
     document.removeEventListener('keydown', blockKeyboard);
     startOver();
   }),
 );
+// playBtn.addEventListener('click', () => {
+//   closeModal(allModals);
+//   play();
+//   document.removeEventListener('keydown', blockKeyboard);
+//   startOver();
+// });
 
 const startOverBtn = document.querySelectorAll('.start-over');
 const playAgainBtn = document.querySelector('.play-again');
