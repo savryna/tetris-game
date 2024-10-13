@@ -2,6 +2,7 @@ import { GAME_SETTINGS } from './gameSettingStart.js';
 import { pause } from './gameControl.js';
 import { score } from './score.js';
 import { updateTotalScore } from './totalScore.js';
+import { setLocalStorage } from './totalScore.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -25,6 +26,7 @@ export function lose(notEmptyLine) {
     updateTotalScore();
     loseScore.innerHTML = `Score: ${score}`;
     modalLose.showModal();
+    setLocalStorage();
     pause();
   }
 }

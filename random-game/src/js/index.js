@@ -22,8 +22,10 @@ import {
   cleanPlayfield,
 } from './gameControl.js';
 import { resetScore } from './score.js';
+import { createTotalList } from './totalScore.js';
 
 setNextImg(nextTetrominoQeue[0].tetrominoType);
+createTotalList();
 
 const startModal = document.querySelector('.modal-start');
 const playBtn = document.querySelectorAll('.play');

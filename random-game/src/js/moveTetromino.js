@@ -6,6 +6,7 @@ import { updatePlayefield, checkFullLine } from './line.js';
 import { countScore } from './score.js';
 import { win } from './win.js';
 import { checkFullPlayfield, lose } from './lose.js';
+import { createTotalList } from './totalScore.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -103,6 +104,7 @@ export function lockTetromino() {
   updatePlayefield();
   lose(checkFullPlayfield());
   setTimeout(() => win(countScore(checkFullLine())), 700);
+  createTotalList();
 }
 
 export const nextTetrominoQeue = [createNextTetromino(), createNextTetromino()];
