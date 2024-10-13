@@ -219,3 +219,15 @@ function addStyleFromIdx(array, style) {
   const wordIdx = ['zero', 'one', 'two', 'three'];
   array.forEach((elem, idx) => elem.classList.add(`${style}-${wordIdx[idx]}`));
 }
+
+export function clearTetromino() {
+  const startTetromino = structuredClone(createTetromino());
+  const { rowStart, columnStart, tetrominoType, matrixBox, matrixSize } =
+    startTetromino;
+  console.log(tetromino);
+  tetromino.rowStart = rowStart;
+  tetromino.columnStart = columnStart;
+  tetromino.tetrominoType = tetrominoType;
+  tetromino.matrixBox = matrixBox;
+  tetromino.matrixSize = matrixSize;
+}

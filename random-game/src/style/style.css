@@ -499,12 +499,21 @@ ul {
   }
 }
 
+.modal-start {
+  background: url(../img/start-bg.webp);
+}
 .modal-win[open] {
   background: url(../img/win-bg.webp);
 }
 
+.modal-pause {
+  background: url(../img/pause-bg.webp);
+}
+
 .modal-win[open],
-.modal-start[open] {
+.modal-start[open],
+.modal-pause[open] {
+  overflow: hidden;
   padding: 30px;
   border: none;
   outline: none;
@@ -521,13 +530,20 @@ ul {
   justify-content: flex-end;
 }
 
+/* .top-btn,
+.bottom-btn {
+  backdrop-filter: blur(40px);
+} */
+
 .modal-win::backdrop,
-.modal-start::backdrop {
+.modal-start::backdrop,
+.modal-pause::backdrop {
   backdrop-filter: blur(40px);
 }
 
 .play-again,
-.play {
+.play,
+.start-over {
   background: url(../img/svg/top-btn.svg);
   width: 144px;
   height: 90px;
@@ -543,10 +559,9 @@ ul {
   backface-visibility: hidden;
 }
 
-.play-again:hover,
-.play:hover {
-  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(-50deg)
-    saturate(2);
+.top-btn:hover,
+.bottom-btn:hover {
+  filter: grayscale(50%);
 }
 
 .total-score {
@@ -566,7 +581,14 @@ ul {
   backface-visibility: hidden;
 }
 
-.total-score:hover {
-  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(-50deg)
-    saturate(2);
+.pause-clue {
+  width: 390px;
+  height: 90px;
+  color: #efe7da;
+  font-size: 23px;
+  font-weight: 800;
+  backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

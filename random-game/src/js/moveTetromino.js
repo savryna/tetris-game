@@ -18,6 +18,7 @@ export function moveTetrominoDown() {
   if (isBorder()) {
     tetromino.rowStart -= 1;
     isRotating = true;
+    console.log(tetromino);
     lockTetromino();
   }
   returnTop();
@@ -63,6 +64,7 @@ function isBorder() {
         playfield[rowStart + y] === undefined ||
         playfield[rowStart + y][columnStart + x]
       ) {
+        console.log('true');
         return true;
       }
     }
@@ -110,19 +112,15 @@ export function lockTetromino() {
   }
   isRotating = false;
   isLock = true;
-  // countScore(checkFullLine());
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
 
   updatePlayefield();
-  // мб setTimeout
   setTimeout(() => win(countScore(checkFullLine())), 700);
-  // const nextTetromino = createNextTetromino();
-  // return nextTetromino;
 }
 
 export const nextTetrominoQeue = [createNextTetromino(), createNextTetromino()];
 
-function returnTop() {
+export function returnTop() {
   const startTetromino = structuredClone(createTetromino());
   const { rowStart: row, columnStart: column } = startTetromino;
   if (isLock) {

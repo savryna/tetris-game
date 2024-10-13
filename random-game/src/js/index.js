@@ -1,6 +1,9 @@
 import { GAME_SETTINGS } from './gameSettingStart.js';
 import {
   showPlayField,
+  tetromino,
+  createTetromino,
+  clearTetromino,
   // moveTetrominoDown,
   // moveTetrominoLeft,
   // moveTetrominoRight,
@@ -12,19 +15,29 @@ import {
   rotateTetromino,
   nextTetrominoQeue,
   setNextImg,
+  returnTop,
 } from './moveTetromino.js';
 import { checkFullPlayfield } from './lose.js';
-import { play, pause, isPlaying, blockKeyboard } from './gameControl.js';
+import {
+  play,
+  pause,
+  isPlaying,
+  blockKeyboard,
+  cleanPlayfield,
+} from './gameControl.js';
+import { resetScore } from './score.js';
 
 setNextImg(nextTetrominoQeue[0].tetrominoType);
 
 const startModal = document.querySelector('.modal-start');
 const playBtn = document.querySelector('.play');
+const pauseModal = document.querySelector('.modal-pause');
+const winModal = document.querySelector('.modal-win');
 
 startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
-  if (startModal.hasAttribute('open')) {
+  if (!isPlaying) {
     blockKeyboard(event);
   } else {
     if (event.key === 'ArrowDown') moveTetrominoDown();
@@ -37,8 +50,10 @@ document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
       if (!isPlaying) {
         play();
+        pauseModal.close();
       } else {
         pause();
+        pauseModal.showModal();
       }
     }
 
@@ -51,3 +66,38 @@ playBtn.addEventListener('click', () => {
   play();
   document.removeEventListener('keydown', blockKeyboard);
 });
+
+const startOverBtn = document.querySelector('.start-over');
+const playAgainBtn = document.querySelector('.play-again');
+const restartGame = [startOverBtn, playAgainBtn];
+const mesh = document.querySelectorAll('.cell');
+
+// П Е Р Е Д Е Л А Т Ь
+
+restartGame.forEach((btn) =>
+  btn.addEventListener('click', () => {
+    // const startTetromino = structuredClone(createTetromino());
+    // const { rowStart, columnStart, tetrominoType, matrixBox, matrixSize } =
+    //   startTetromino;
+    // console.log(tetromino);
+    // tetromino.rowStart = rowStart;
+    // tetromino.columnStart = columnStart;
+    // tetromino.tetrominoType = tetrominoType;
+    // tetromino.matrixBox = matrixBox;
+    // tetromino.matrixSize = matrixSize;
+    startOver();
+  }),
+);
+
+function startOver() {
+  GAME_SETTINGS.lines = 0;
+
+  clearTetromino();
+  showPlayField();
+  cleanPlayfield();
+  resetScore();
+  pauseModal.close();
+  winModal.close();
+  mesh.forEach((cell) => cell.removeAttribute('class'));
+  play();
+}

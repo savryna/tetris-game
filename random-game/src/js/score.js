@@ -11,8 +11,8 @@ export function countScore(set) {
   const amountLine = set.size;
   let lineWeight = 0;
   if (isCrossCheck) {
-    lineWeight = 496;
-    // lineWeight = 1984;
+    // lineWeight = 496;
+    lineWeight = 1984;
   }
   if (isNormalGame) {
     lineWeight = 64;
@@ -29,4 +29,12 @@ export function countScore(set) {
   }
   console.log(score);
   return score;
+}
+
+const scoreHtmlElem = document.querySelector('.score>span');
+export function resetScore() {
+  score = 0;
+  GAME_SETTINGS.lines = 0;
+  linesFilled = 0;
+  scoreHtmlElem.innerHTML = score;
 }
