@@ -51,16 +51,6 @@ export function moveTetrominoLeft() {
   // console.log(tetromino.columnStart);
 }
 
-export function moveBottom() {
-  tetromino.rowStart += GAME_SETTINGS.rows - tetromino.rowStart - 2;
-  if (isBorder()) {
-    tetromino.rowStart -= 1;
-    console.log(playfield);
-    // isRotating = true;
-    lockTetromino();
-  }
-}
-
 function isBorder() {
   const { columnStart, rowStart, matrixSize, matrixBox } = tetromino;
   for (let y = 0; y < matrixSize; y++) {
