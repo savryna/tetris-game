@@ -14,34 +14,40 @@ import {
   setNextImg,
 } from './moveTetromino.js';
 import { checkFullPlayfield } from './lose.js';
-import { play, pause, isPlaying } from './gameControl.js';
-// import { checkFullLine, updatePlayefield } from './line.js';
+import { play, pause, isPlaying, blockKeyboard } from './gameControl.js';
 
 setNextImg(nextTetrominoQeue[0].tetrominoType);
-// console.log(nextTetrominoQeue);
 
-// showPlayField();
+const startModal = document.querySelector('.modal-start');
+const playBtn = document.querySelector('.play');
 
-// const playAgain = document.querySelector('.play-again');
-// playAgain.addEventListener('click', () => showPlayField());
-// const modalWin = document.querySelector('.modal-win');
-// modalWin.showModal();
+startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowDown') moveTetrominoDown();
-  if (event.key === 'ArrowRight') moveTetrominoRight();
-  if (event.key === 'ArrowLeft') moveTetrominoLeft();
-  if (event.key === 'ArrowUp') {
-    rotateTetromino();
-  }
-  if (event.key === 'z') checkFullPlayfield();
-  if (event.code === 'Space') {
-    if (!isPlaying) {
-      play();
-    } else {
-      pause();
+  if (startModal.hasAttribute('open')) {
+    blockKeyboard(event);
+  } else {
+    if (event.key === 'ArrowDown') moveTetrominoDown();
+    if (event.key === 'ArrowRight') moveTetrominoRight();
+    if (event.key === 'ArrowLeft') moveTetrominoLeft();
+    if (event.key === 'ArrowUp') {
+      rotateTetromino();
     }
-  }
 
-  showPlayField();
+    if (event.code === 'Space') {
+      if (!isPlaying) {
+        play();
+      } else {
+        pause();
+      }
+    }
+
+    showPlayField();
+  }
+});
+
+playBtn.addEventListener('click', () => {
+  startModal.close();
+  play();
+  document.removeEventListener('keydown', blockKeyboard);
 });

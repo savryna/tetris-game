@@ -19,3 +19,7 @@ export function pause() {
   timer = null;
   showPlayField();
 }
+
+export function blockKeyboard(event) {
+  event.preventDefault();
+}
