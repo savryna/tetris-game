@@ -91,15 +91,6 @@ const mesh = document.querySelectorAll('.cell');
 
 restartGame.forEach((btn) =>
   btn.addEventListener('click', () => {
-    // const startTetromino = structuredClone(createTetromino());
-    // const { rowStart, columnStart, tetrominoType, matrixBox, matrixSize } =
-    //   startTetromino;
-    // console.log(tetromino);
-    // tetromino.rowStart = rowStart;
-    // tetromino.columnStart = columnStart;
-    // tetromino.tetrominoType = tetrominoType;
-    // tetromino.matrixBox = matrixBox;
-    // tetromino.matrixSize = matrixSize;
     startOver();
   }),
 );
