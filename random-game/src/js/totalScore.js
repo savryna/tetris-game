@@ -5,7 +5,6 @@ const totalScore = [];
 
 function addNewScore() {
   totalScore.push(score);
-  // console.log(totalScore);
 }
 
 function cutTotalScore() {

@@ -11,7 +11,6 @@ export function checkFullLine() {
       line[x] = playfield[y][x];
       const lineLength = line.filter((elem) => elem).length;
       if (lineLength === playfield[0].length) {
-        // console.log(`line${y}:full`);
         lineForDelete.add(y);
       }
     }

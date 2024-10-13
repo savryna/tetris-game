@@ -8,8 +8,6 @@ import { win } from './win.js';
 import { checkFullPlayfield, lose } from './lose.js';
 
 const playfield = GAME_SETTINGS.playfield;
-// let activeTetromino = tetromino;
-// const startTetromino = structuredClone(createTetromino());
 
 let isRotating = false;
 let isLock = false;
@@ -21,7 +19,6 @@ export function moveTetrominoDown() {
     isRotating = true;
     lockTetromino();
   }
-  // returnTop();
 }
 
 export function moveTetrominoRight() {
@@ -29,14 +26,6 @@ export function moveTetrominoRight() {
   if (isBorder()) {
     tetromino.columnStart -= 1;
   }
-  // if (isLock) {
-  //   tetromino.rowStart = startTetromino.rowStart;
-  //   isLock = false;
-  // }
-  // returnTop();
-  // console.log('start', startTetromino);
-  // console.log('tetromino', tetromino);
-  // console.log(tetromino.columnStart);
 }
 
 export function moveTetrominoLeft() {
@@ -44,12 +33,6 @@ export function moveTetrominoLeft() {
   if (isBorder()) {
     tetromino.columnStart += 1;
   }
-  // returnTop();
-  // if (isLock) {
-  //   tetromino.rowStart = startTetromino.rowStart;
-  //   isLock = false;
-  // }
-  // console.log(tetromino.columnStart);
 }
 
 function isBorder() {
@@ -64,7 +47,6 @@ function isBorder() {
         playfield[rowStart + y] === undefined ||
         playfield[rowStart + y][columnStart + x]
       ) {
-        // console.log('true');
         return true;
       }
     }
@@ -77,7 +59,6 @@ export function rotateTetromino() {
   const rotateMatrix = reverseMatrix(transposeMatrix(tetromino.matrixBox));
   tetromino.matrixBox = rotateMatrix;
   if (tetromino.rowStart + tetromino.matrixSize >= GAME_SETTINGS.rows - 1) {
-    console.log(tetromino.rowStart + tetromino.matrixSize);
     event.preventDefault();
     isRotating = true;
     return false;
@@ -102,9 +83,6 @@ function kickWall(row, column) {
   if (tetromino.columnStart + column >= 9) {
     tetromino.columnStart = 9 - column;
   }
-  // if (tetromino.rowStart + tetromino.matrixSize >= GAME_SETTINGS.rows) {
-  //   isRotating = true;
-  // }
 }
 
 const scoreHtmlElem = document.querySelector('.score>span');
@@ -133,7 +111,6 @@ export function returnTop() {
   const startTetromino = structuredClone(createTetromino());
   const { rowStart: row, columnStart: column } = startTetromino;
   if (isLock) {
-    // createNextTetromino();
     const nextTImg = nextTetrominoQeue[1];
     const nextT = nextTetrominoQeue.shift();
     const {
@@ -145,15 +122,12 @@ export function returnTop() {
     } = nextT;
     setNextImg(nextTImg.tetrominoType);
 
-    // nextTetrominoQeue;
     nextTetrominoQeue.push(createNextTetromino());
     tetromino.rowStart = nextRowStart;
     tetromino.columnStart = nextColumnStart;
     tetromino.tetrominoType = nextTetrominoType;
     tetromino.matrixBox = nextMatrixBox;
     tetromino.matrixSize = nextMatrixSize;
-    // console.log(nextTetrominoQeue);
-    // setNextImg(nextTetrominoQeue[1].tetrominoType);
     isLock = false;
   }
 }
@@ -166,7 +140,6 @@ function createNextTetromino() {
 const nextTetrominoImg = document.querySelector('.next__img');
 
 export function setNextImg(type) {
-  // const nextType = createNextTetromino().tetrominoType;
   nextTetrominoImg.removeAttribute('class');
   nextTetrominoImg.classList.add('next__img', `${type}-img`);
 }

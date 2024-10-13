@@ -4,9 +4,6 @@ import {
   tetromino,
   createTetromino,
   clearTetromino,
-  // moveTetrominoDown,
-  // moveTetrominoLeft,
-  // moveTetrominoRight,
 } from './gameWindow.js';
 import {
   moveTetrominoDown,
@@ -17,7 +14,6 @@ import {
   setNextImg,
   returnTop,
 } from './moveTetromino.js';
-import { checkFullPlayfield } from './lose.js';
 import {
   play,
   pause,
@@ -58,7 +54,6 @@ document.addEventListener('keydown', (event) => {
       rotateTetromino();
     }
 
-    console.log(isPlaying);
     showPlayField();
   }
 
@@ -87,8 +82,6 @@ const playAgainBtn = document.querySelector('.play-again');
 const restartGame = [playAgainBtn, ...startOverBtn];
 const mesh = document.querySelectorAll('.cell');
 
-// П Е Р Е Д Е Л А Т Ь
-
 restartGame.forEach((btn) =>
   btn.addEventListener('click', () => {
     startOver();
@@ -103,9 +96,6 @@ function startOver() {
   cleanPlayfield();
   resetScore();
   closeModal(allModals);
-  // pauseModal.close();
-  // winModal.close();
-  // loseModal.close();
   mesh.forEach((cell) => cell.removeAttribute('class'));
   play();
 }
@@ -143,7 +133,6 @@ mainMenuBtn.forEach((btn) =>
 
 function closeModal(modals) {
   modals.forEach((modal) => {
-    console.log(modal);
     if (modal.hasAttribute('open')) {
       modal.close();
     }
