@@ -20,3 +20,7 @@ export function transposeMatrix(matrix) {
 export function reverseMatrix(matrix) {
   return matrix.map((elem) => elem.reverse());
 }
+
+export function sortArray(array) {
+  array.sort((a, b) => b - a);
+}

@@ -30,11 +30,12 @@ import { resetScore } from './score.js';
 setNextImg(nextTetrominoQeue[0].tetrominoType);
 
 const startModal = document.querySelector('.modal-start');
-const playBtn = document.querySelector('.play');
+const playBtn = document.querySelectorAll('.play');
 const pauseModal = document.querySelector('.modal-pause');
 const winModal = document.querySelector('.modal-win');
 const loseModal = document.querySelector('.modal-lose');
-
+const totalScorePause = document.querySelector('.total-score-pause');
+const totalScoreOther = document.querySelector('.total-score-other');
 startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
@@ -63,11 +64,14 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-playBtn.addEventListener('click', () => {
-  startModal.close();
-  play();
-  document.removeEventListener('keydown', blockKeyboard);
-});
+playBtn.forEach((btn) =>
+  btn.addEventListener('click', () => {
+    startModal.close();
+    totalScoreOther.close();
+    play();
+    document.removeEventListener('keydown', blockKeyboard);
+  }),
+);
 
 const startOverBtn = document.querySelectorAll('.start-over');
 const playAgainBtn = document.querySelector('.play-again');
@@ -104,3 +108,13 @@ function startOver() {
   mesh.forEach((cell) => cell.removeAttribute('class'));
   play();
 }
+
+const totalScoreBtns = [...document.querySelectorAll('button.total-score')];
+
+const totalScoreBtnMainMenu = totalScoreBtns[0];
+console.log(totalScoreBtns);
+totalScoreBtnMainMenu.addEventListener('click', () => {
+  console.log('hi');
+  totalScoreOther.showModal();
+  startModal.close();
+});

@@ -22,7 +22,7 @@ export function moveTetrominoDown() {
     // console.log(tetromino);
     lockTetromino();
   }
-  returnTop();
+  // returnTop();
 }
 
 export function moveTetrominoRight() {
@@ -34,7 +34,7 @@ export function moveTetrominoRight() {
   //   tetromino.rowStart = startTetromino.rowStart;
   //   isLock = false;
   // }
-  returnTop();
+  // returnTop();
   // console.log('start', startTetromino);
   // console.log('tetromino', tetromino);
   // console.log(tetromino.columnStart);
@@ -45,7 +45,7 @@ export function moveTetrominoLeft() {
   if (isBorder()) {
     tetromino.columnStart += 1;
   }
-  returnTop();
+  // returnTop();
   // if (isLock) {
   //   tetromino.rowStart = startTetromino.rowStart;
   //   isLock = false;
@@ -77,7 +77,12 @@ export function rotateTetromino() {
   isRotating = true;
   const rotateMatrix = reverseMatrix(transposeMatrix(tetromino.matrixBox));
   tetromino.matrixBox = rotateMatrix;
-
+  if (tetromino.rowStart + tetromino.matrixSize >= GAME_SETTINGS.rows - 1) {
+    console.log(tetromino.rowStart + tetromino.matrixSize);
+    event.preventDefault();
+    isRotating = true;
+    return false;
+  }
   for (let y = 0; y < tetromino.matrixSize; y++) {
     for (let x = 0; x < tetromino.matrixSize; x++) {
       if (!tetromino.matrixBox[y][x]) {
@@ -98,6 +103,9 @@ function kickWall(row, column) {
   if (tetromino.columnStart + column >= 9) {
     tetromino.columnStart = 9 - column;
   }
+  // if (tetromino.rowStart + tetromino.matrixSize >= GAME_SETTINGS.rows) {
+  //   isRotating = true;
+  // }
 }
 
 const scoreHtmlElem = document.querySelector('.score>span');
@@ -114,7 +122,7 @@ export function lockTetromino() {
   isRotating = false;
   isLock = true;
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
-
+  returnTop();
   updatePlayefield();
   lose(checkFullPlayfield());
   setTimeout(() => win(countScore(checkFullLine())), 700);

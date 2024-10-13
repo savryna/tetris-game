@@ -514,10 +514,15 @@ ul {
   background: url(../img/lose-bg.webp);
 }
 
+.modal-total-score {
+  background: url(../img/score-bg.jpg);
+}
+
 .modal-win[open],
 .modal-start[open],
 .modal-pause[open],
-.modal-lose[open] {
+.modal-lose[open],
+.modal-total-score[open] {
   overflow: hidden;
   padding: 30px;
   border: none;
@@ -543,7 +548,8 @@ ul {
 .modal-win::backdrop,
 .modal-start::backdrop,
 .modal-pause::backdrop,
-.modal-lose::backdrop {
+.modal-lose::backdrop,
+.modal-total-score::backdrop {
   backdrop-filter: blur(40px);
 }
 

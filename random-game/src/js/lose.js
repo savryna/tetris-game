@@ -1,6 +1,7 @@
 import { GAME_SETTINGS } from './gameSettingStart.js';
 import { pause } from './gameControl.js';
 import { score } from './score.js';
+import { updateTotalScore } from './totalScore.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -19,8 +20,10 @@ export function checkFullPlayfield() {
 const modalLose = document.querySelector('.modal-lose');
 const loseScore = document.querySelector('.lose-score');
 const linesForLose = 15;
+
 export function lose(notEmptyLine) {
   if (notEmptyLine >= linesForLose - 1) {
+    updateTotalScore();
     loseScore.innerHTML = `Score: ${score}`;
     modalLose.showModal();
     pause();
