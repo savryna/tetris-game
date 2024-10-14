@@ -35,3 +35,34 @@ export function resetScore() {
   linesFilled = 0;
   scoreHtmlElem.innerHTML = score;
 }
+
+function checkFlags() {
+  if (isCrossCheck) {
+    isNormalGame = false;
+    isInfinityGame = false;
+  } else {
+    isNormalGame = true;
+  }
+  if (isNormalGame) {
+    isInfinityGame = false;
+    isCrossCheck = false;
+  }
+  if (isInfinityGame) {
+    isNormalGame = false;
+    isCrossCheck = false;
+  }
+}
+
+const crossCheckInput = document.querySelector('.cross-check-input');
+export function chooseCroccCheck() {
+  if (crossCheckInput.hasAttribute('checked')) {
+    crossCheckInput.removeAttribute('checked');
+    isCrossCheck = false;
+    checkFlags();
+  } else {
+    crossCheckInput.setAttribute('checked', 'checked');
+    isCrossCheck = true;
+    checkFlags();
+  }
+  console.log(isCrossCheck, isNormalGame, isInfinityGame);
+}

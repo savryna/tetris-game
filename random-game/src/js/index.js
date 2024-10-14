@@ -21,7 +21,7 @@ import {
   blockKeyboard,
   cleanPlayfield,
 } from './gameControl.js';
-import { resetScore } from './score.js';
+import { resetScore, chooseCroccCheck } from './score.js';
 import { createTotalList } from './totalScore.js';
 import { toggleAudio } from './audio.js';
 
@@ -153,3 +153,6 @@ const audio = document.querySelector('.audio-bg');
 const btnAudio = document.querySelector('.button-sound');
 
 btnAudio.addEventListener('click', () => toggleAudio(audio));
+
+const crossCheckInput = document.querySelector('.cross-check-input');
+crossCheckInput.addEventListener('click', () => chooseCroccCheck());
