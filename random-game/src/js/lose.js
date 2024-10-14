@@ -1,8 +1,8 @@
 import { GAME_SETTINGS } from './gameSettingStart.js';
 import { pause } from './gameControl.js';
 import { score } from './score.js';
-import { updateTotalScore } from './totalScore.js';
-import { setLocalStorage } from './totalScore.js';
+import { addNewScore } from './totalScore.js';
+import { createTotalList } from './totalScore.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -23,10 +23,12 @@ const linesForLose = 15;
 
 export function lose(notEmptyLine) {
   if (notEmptyLine >= linesForLose - 1) {
-    updateTotalScore();
+    // updateTotalScore();
     loseScore.innerHTML = `Score: ${score}`;
     modalLose.showModal();
-    setLocalStorage();
+    addNewScore();
+    createTotalList();
+    // setLocalStorage();
     pause();
   }
 }
