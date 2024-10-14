@@ -6,7 +6,7 @@ export function toggleAudio(audio) {
     soundPlay = true;
     audio.play();
     btnImg.setAttribute('src', 'src/img/svg/sound.svg');
-    audio.volume = 0.5;
+    audio.volume = 1;
   } else {
     soundPlay = false;
     audio.pause();
@@ -18,7 +18,7 @@ export function audioGame(audio) {
   if (soundPlay) {
     audio.setAttribute('src', 'src/audio/brick.mp3');
     audio.play();
-    audio.volume = 0.2;
+    audio.volume = 0.1;
     // audio.pause();
   } else {
     audio.pause();
