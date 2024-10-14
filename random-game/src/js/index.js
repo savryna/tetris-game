@@ -69,13 +69,16 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-playBtn.forEach((btn) =>
-  btn.addEventListener('click', () => {
-    closeModal(allModals);
-    document.removeEventListener('keydown', blockKeyboard);
-    startOver();
-  }),
-);
+playBtn[0].addEventListener('click', () => {
+  closeModal(allModals);
+  document.removeEventListener('keydown', blockKeyboard);
+  startOver();
+});
+
+playBtn[1].addEventListener('click', () => {
+  closeModal(allModals);
+  play();
+});
 // playBtn.addEventListener('click', () => {
 //   closeModal(allModals);
 //   play();
