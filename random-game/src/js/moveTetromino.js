@@ -101,11 +101,9 @@ export function lockTetromino() {
   isLock = true;
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
   returnTop();
-  // addNewScore();
   updatePlayefield();
   lose(checkFullPlayfield());
   setTimeout(() => win(countScore(checkFullLine())), 700);
-  // createTotalList();
 }
 
 export const nextTetrominoQeue = [createNextTetromino(), createNextTetromino()];

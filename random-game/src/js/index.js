@@ -79,12 +79,6 @@ playBtn[1].addEventListener('click', () => {
   closeModal(allModals);
   play();
 });
-// playBtn.addEventListener('click', () => {
-//   closeModal(allModals);
-//   play();
-//   document.removeEventListener('keydown', blockKeyboard);
-//   startOver();
-// });
 
 const startOverBtn = document.querySelectorAll('.start-over');
 const playAgainBtn = document.querySelector('.play-again');
