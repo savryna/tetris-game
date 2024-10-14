@@ -7,6 +7,7 @@ import { countScore } from './score.js';
 import { win } from './win.js';
 import { checkFullPlayfield, lose } from './lose.js';
 import { addNewScore } from './totalScore.js';
+import { audioGame } from './audio.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -87,6 +88,7 @@ function kickWall(row, column) {
 }
 
 const scoreHtmlElem = document.querySelector('.score>span');
+const audioBrick = document.querySelector('.game-sound');
 
 export function lockTetromino() {
   const { columnStart, rowStart, matrixSize, matrixBox, tetrominoType } =
@@ -100,6 +102,7 @@ export function lockTetromino() {
   isRotating = false;
   isLock = true;
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
+  audioGame(audioBrick);
   returnTop();
   updatePlayefield();
   lose(checkFullPlayfield());

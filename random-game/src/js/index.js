@@ -23,6 +23,7 @@ import {
 } from './gameControl.js';
 import { resetScore } from './score.js';
 import { createTotalList } from './totalScore.js';
+import { toggleAudio } from './audio.js';
 
 setNextImg(nextTetrominoQeue[0].tetrominoType);
 createTotalList();
@@ -78,6 +79,12 @@ playBtn[0].addEventListener('click', () => {
 playBtn[1].addEventListener('click', () => {
   closeModal(allModals);
   play();
+});
+
+playBtn[2].addEventListener('click', () => {
+  closeModal(allModals);
+  document.removeEventListener('keydown', blockKeyboard);
+  startOver();
 });
 
 const startOverBtn = document.querySelectorAll('.start-over');
@@ -141,3 +148,8 @@ function closeModal(modals) {
     }
   });
 }
+
+const audio = document.querySelector('.audio-bg');
+const btnAudio = document.querySelector('.button-sound');
+
+btnAudio.addEventListener('click', () => toggleAudio(audio));

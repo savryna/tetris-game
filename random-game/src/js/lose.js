@@ -3,6 +3,7 @@ import { pause } from './gameControl.js';
 import { score } from './score.js';
 import { addNewScore } from './totalScore.js';
 import { createTotalList } from './totalScore.js';
+import { audioLose } from './audio.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -20,10 +21,12 @@ export function checkFullPlayfield() {
 const modalLose = document.querySelector('.modal-lose');
 const loseScore = document.querySelector('.lose-score');
 const linesForLose = 15;
+const audioLoseElem = document.querySelector('.game-sound');
 
 export function lose(notEmptyLine) {
   if (notEmptyLine >= linesForLose - 1) {
     // updateTotalScore();
+    audioLose(audioLoseElem);
     loseScore.innerHTML = `Score: ${score}`;
     modalLose.showModal();
     addNewScore();
