@@ -65,11 +65,11 @@ ul {
 }
 .header {
   width: 100%;
-  padding: 1vh 2vh;
+  padding: 1vh 2vh 0 2vh;
 }
 
 .button-sound {
-  width: 45px;
+  width: 30px;
   /* height: 45px; */
 }
 
