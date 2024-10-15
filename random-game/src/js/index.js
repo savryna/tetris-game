@@ -45,7 +45,7 @@ const allModals = [
   totalScorePause,
 ];
 
-// startModal.showModal();
+startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
   if (!isPlaying) {
