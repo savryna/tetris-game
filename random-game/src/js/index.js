@@ -44,7 +44,8 @@ const allModals = [
   totalScoreOther,
   totalScorePause,
 ];
-startModal.showModal();
+
+// startModal.showModal();
 
 document.addEventListener('keydown', (event) => {
   if (!isPlaying) {
@@ -62,10 +63,16 @@ document.addEventListener('keydown', (event) => {
   if (event.code === 'Space') {
     if (!isPlaying) {
       play();
-      pauseModal.close();
+      // pauseModal.close();
+      toggleAnimationModal(pauseModal);
     } else {
       pause();
-      pauseModal.showModal();
+      toggleAnimationModal(pauseModal);
+      // pauseModal.animate(
+      //   { transform: ['translateY(-500px)', 'translateY(0px)'] },
+      //   200,
+      // );
+      // pauseModal.showModal();
     }
   }
 });
@@ -123,13 +130,15 @@ const totalScoreBtnPause = totalScoreBtns[1];
 totalScoreBtnOther.forEach((btn) =>
   btn.addEventListener('click', () => {
     closeModal(allModals);
-    totalScoreOther.showModal();
+    toggleAnimationModal(totalScoreOther);
+    // totalScoreOther.showModal();
   }),
 );
 
 totalScoreBtnPause.addEventListener('click', () => {
   closeModal(allModals);
-  totalScorePause.showModal();
+  toggleAnimationModal(totalScorePause);
+  // totalScorePause.showModal();
 });
 
 const mainMenuBtn = document.querySelectorAll('.main-menu');
@@ -137,14 +146,15 @@ const mainMenuBtn = document.querySelectorAll('.main-menu');
 mainMenuBtn.forEach((btn) =>
   btn.addEventListener('click', () => {
     closeModal(allModals);
-    startModal.showModal();
+    toggleAnimationModal(startModal);
+    // startModal.showModal();
   }),
 );
 
 function closeModal(modals) {
   modals.forEach((modal) => {
     if (modal.hasAttribute('open')) {
-      modal.close();
+      toggleAnimationModal(modal);
     }
   });
 }
@@ -156,3 +166,22 @@ btnAudio.addEventListener('click', () => toggleAudio(audio));
 
 const crossCheckInput = document.querySelector('.cross-check-input');
 crossCheckInput.addEventListener('click', () => chooseCroccCheck());
+
+function toggleAnimationModal(modalWindow) {
+  if (!modalWindow.hasAttribute('open')) {
+    modalWindow.animate(
+      { transform: ['translateY(-500px)', 'translateY(0px)'] },
+      200,
+    );
+
+    modalWindow.showModal();
+  } else {
+    const animation = modalWindow.animate(
+      { transform: ['translateY(0)', 'translateY(-999px)'] },
+      200,
+    );
+    animation.onfinish = (event) => {
+      modalWindow.close();
+    };
+  }
+}
