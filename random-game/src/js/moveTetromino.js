@@ -107,7 +107,7 @@ export function lockTetromino() {
   returnTop();
   updatePlayefield();
   lose(checkFullPlayfield());
-  setTimeout(() => win(countScore(checkFullLine())), 700);
+  win(countScore(checkFullLine()));
 }
 
 export const nextTetrominoQeue = [createNextTetromino(), createNextTetromino()];
