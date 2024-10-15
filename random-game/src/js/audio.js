@@ -5,7 +5,7 @@ export function toggleAudio(audio) {
   if (audio.paused) {
     soundPlay = true;
     audio.play();
-    btnImg.setAttribute('src', 'src/img/svg/sound.svg');
+    btnImg.setAttribute('src', 'svg/sound.svg');
     audio.volume = 1;
   } else {
     soundPlay = false;
@@ -16,7 +16,6 @@ export function toggleAudio(audio) {
 
 export function audioGame(audio) {
   if (soundPlay) {
-    audio.setAttribute('src', 'src/audio/brick.mp3');
     audio.play();
     audio.volume = 0.1;
     // audio.pause();
@@ -27,7 +26,7 @@ export function audioGame(audio) {
 
 export function audioLose(audio) {
   if (soundPlay) {
-    audio.setAttribute('src', 'src/audio/lose.mp3');
+    audio.setAttribute('src', 'audio/lose.mp3');
     audio.volume = 0.1;
     audio.play();
   } else {
@@ -37,7 +36,7 @@ export function audioLose(audio) {
 
 export function audioWin(audio) {
   if (soundPlay) {
-    audio.setAttribute('src', 'src/audio/win.mp3');
+    audio.setAttribute('src', 'audio/win.mp3');
     audio.volume = 0.1;
     audio.play();
   } else {

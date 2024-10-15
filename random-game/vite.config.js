@@ -1,3 +1,7 @@
 export default {
-  base: '',
+  base: './',
+  publicDir: 'public',
+  build: {
+    minify: false,
+  },
 };

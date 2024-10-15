@@ -10,7 +10,6 @@ export function play() {
   isPlaying = true;
   showPlayField();
   timer = setInterval(() => {
-    console.log('hi');
     moveTetrominoDown();
     showPlayField();
   }, 1000);
