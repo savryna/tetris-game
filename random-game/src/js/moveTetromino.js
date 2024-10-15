@@ -102,6 +102,7 @@ export function lockTetromino() {
   isRotating = false;
   isLock = true;
   scoreHtmlElem.innerHTML = countScore(checkFullLine());
+  audioBrick.setAttribute('src', 'audio/brick.mp3');
   audioGame(audioBrick);
   returnTop();
   updatePlayefield();
