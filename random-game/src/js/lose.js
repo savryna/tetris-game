@@ -4,6 +4,7 @@ import { score } from './score.js';
 import { addNewScore } from './totalScore.js';
 import { createTotalList } from './totalScore.js';
 import { audioLose } from './audio.js';
+import { toggleAnimationModal } from './index.js';
 
 const playfield = GAME_SETTINGS.playfield;
 
@@ -28,7 +29,8 @@ export function lose(notEmptyLine) {
     // updateTotalScore();
     audioLose(audioLoseElem);
     loseScore.innerHTML = `Score: ${score}`;
-    modalLose.showModal();
+    toggleAnimationModal(modalLose);
+    // modalLose.showModal();
     addNewScore();
     createTotalList();
     // setLocalStorage();

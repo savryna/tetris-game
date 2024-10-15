@@ -2,6 +2,7 @@ import { pause } from './gameControl.js';
 import { addNewScore } from './totalScore.js';
 import { createTotalList } from './totalScore.js';
 import { audioWin } from './audio.js';
+import { toggleAnimationModal } from './index.js';
 
 const audioWinElem = document.querySelector('.game-sound');
 const winScore = 1984;
@@ -13,7 +14,8 @@ export function win(currentScore) {
     createTotalList();
     // updateTotalScore();
     // setLocalStorage();
-    modalWin.showModal();
+    toggleAnimationModal(modalWin);
+    // modalWin.showModal();
     // setLocalStorage();
     pause();
   }

@@ -167,7 +167,7 @@ btnAudio.addEventListener('click', () => toggleAudio(audio));
 const crossCheckInput = document.querySelector('.cross-check-input');
 crossCheckInput.addEventListener('click', () => chooseCroccCheck());
 
-function toggleAnimationModal(modalWindow) {
+export function toggleAnimationModal(modalWindow) {
   if (!modalWindow.hasAttribute('open')) {
     modalWindow.animate(
       { transform: ['translateY(-500px)', 'translateY(0px)'] },
