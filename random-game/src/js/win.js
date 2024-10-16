@@ -12,11 +12,7 @@ export function win(currentScore) {
     audioWin(audioWinElem);
     addNewScore();
     createTotalList();
-    // updateTotalScore();
-    // setLocalStorage();
     toggleAnimationModal(modalWin);
-    // modalWin.showModal();
-    // setLocalStorage();
     pause();
   }
 }

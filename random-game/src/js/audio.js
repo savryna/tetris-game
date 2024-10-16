@@ -17,7 +17,7 @@ export function toggleAudio(audio) {
 export function audioGame(audio) {
   if (soundPlay) {
     audio.play();
-    audio.volume = 0.1;
+    audio.volume = 0.3;
     // audio.pause();
   } else {
     audio.pause();
@@ -27,7 +27,7 @@ export function audioGame(audio) {
 export function audioLose(audio) {
   if (soundPlay) {
     audio.setAttribute('src', 'audio/lose.mp3');
-    audio.volume = 0.1;
+    audio.volume = 1;
     audio.play();
   } else {
     audio.pause();
@@ -37,7 +37,7 @@ export function audioLose(audio) {
 export function audioWin(audio) {
   if (soundPlay) {
     audio.setAttribute('src', 'audio/win.mp3');
-    audio.volume = 0.1;
+    audio.volume = 1;
     audio.play();
   } else {
     audio.pause();
