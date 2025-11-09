@@ -5,8 +5,8 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 
-> Приложение для просмотра и поиска изображений, созданное в рамках учебного проекта **JS30 #2.2 Audio Player** от Rolling Scopes School.
+> Мини-игра созданная в рамках учебного проекта **JS30 #3.3 Random Game** от Rolling Scopes School.
 
 🏗️ [Демо проекта](https://savryna.github.io/tetris-game)
 
-📄 [Описание задания](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-game-hints.md)
+📄 [Описание задания](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/js30%23/js30-9.md)
